@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>Business Network Definition Outline</title>
+    <link type="text/css" rel="stylesheet" href="assets/css/github-markdown.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/pilcrow.css">
+    <link type="text/css" rel="stylesheet" href="assets/css/hljs-github.min.css"/>
+  </head>
+  <body>
+    <article class="markdown-body"><h1 id="business-network-definition-outline"><a class="header-link" href="#business-network-definition-outline"></a>Business Network Definition Outline</h1>
+<ul class="list">
+<li>carauction-network  0.1.0</li>
+</ul>
+<h1 id="class-declarations-summary"><a class="header-link" href="#class-declarations-summary"></a>Class Declarations Summary</h1>
+<table>
+<thead>
+<tr>
+<th>Namespace</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>org.hyperledger.composer.system</td>
+<td>Asset</td>
+</tr>
+<tr>
+<td>org.hyperledger.composer.system</td>
+<td>Participant</td>
+</tr>
+<tr>
+<td>org.hyperledger.composer.system</td>
+<td>Transaction</td>
+</tr>
+<tr>
+<td>org.hyperledger.composer.system</td>
+<td>Event</td>
+</tr>
+<tr>
+<td>org.acme.vehicle.auction</td>
+<td>Vehicle</td>
+</tr>
+<tr>
+<td>org.acme.vehicle.auction</td>
+<td>ListingState</td>
+</tr>
+<tr>
+<td>org.acme.vehicle.auction</td>
+<td>VehicleListing</td>
+</tr>
+<tr>
+<td>org.acme.vehicle.auction</td>
+<td>User</td>
+</tr>
+<tr>
+<td>org.acme.vehicle.auction</td>
+<td>Member</td>
+</tr>
+<tr>
+<td>org.acme.vehicle.auction</td>
+<td>Auctioneer</td>
+</tr>
+<tr>
+<td>org.acme.vehicle.auction</td>
+<td>Offer</td>
+</tr>
+<tr>
+<td>org.acme.vehicle.auction</td>
+<td>CloseBidding</td>
+</tr>
+</tbody>
+</table>
+<h1 id="hyperledger-composer-car-auction-demo"><a class="header-link" href="#hyperledger-composer-car-auction-demo"></a>Hyperledger Composer Car Auction Demo</h1>
+<p>This is an interactive, distributed, car auction demo, backed by Hyperledger Fabric. Invite participants to join your distributed auction, list assets for sale (setting a reserve price), and watch as assets that have met their reserve price are automatically transferred to the highest bidder at the end of the auction.</p>
+<h2 id="understanding-the-business-network"><a class="header-link" href="#understanding-the-business-network"></a>Understanding the Business Network</h2>
+<p>The easiest way to interact with the demo is using our work-in-progress <a href="http://composer-playground.mybluemix.net">Hyperledger Composer web application</a>. Hyperledger Composer allows you to define a business network (defining the data model and writing transaction processing logic), manage assets &amp; participants and submit transactions.</p>
+<p>The data model for the auction business network is defined in a CTO model file, managed in GitHub <a href="https://github.com/hyperledger/composer-sample-networks/blob/master/packages/carauction-network/models/auction.cto">here</a>.</p>
+<p>The data model is very simple (less than 50 lines). It defines the structure of the assets, participants and transactions for a very simple auction.</p>
+<p>The business logic is defined in a single Javascript file <a href="https://github.com/hyperledger/composer-sample-networks/blob/master/packages/carauction-network/lib/logic.js">here</a>. The logic consists of two Javascript functions that are automatically invoked by the Hyperledger Composer runtime chain code when transactions are submitted for processing.</p>
+<p>The <code>makeOffer</code> function is called when an <code>Offer</code> transaction is submitted. The logic simply checks that the listing for the offer is still for sale, and then adds the offer to the listing, and then updates the offer in the <code>VehicleListing</code> asset registry.</p>
+<p>The <code>closeBidding</code> function is called when a <code>CloseBidding</code> transaction is submitted for processing. The logic checks that the listing is still for sale, sorts the offers by bid price, and then if the reserve has been met, transfers the ownership of the vehicle associated with the listing to the highest bidder. Money is transferred from the buyer&#39;s account to the seller&#39;s account, and then all the modified assets are updated in their respective registries.</p>
+<p>Access control for the business network is defined <a href="https://github.com/hyperledger/composer-sample-networks/blob/master/packages/carauction-network/permissions.acl">here</a>.</p>
+<h3 id="developer-unit-testing"><a class="header-link" href="#developer-unit-testing"></a>Developer Unit Testing</h3>
+<blockquote>
+<p>Note that if you <code>git clone</code> the <a href="https://github.com/hyperledger/composer-sample-networks">repository</a> for the Business Network you can run a unit tests for the logic in the business network using the Hyperledger Composer embedded runtime which simulates a Hyperledger Fabric using a pure Javascript runtime. Simply run:</p>
+</blockquote>
+<pre class="hljs"><code><span class="hljs-built_in">cd</span> packages/carAuction-network
+npm install
+npm <span class="hljs-built_in">test</span></code></pre><p>The unit test <a href="https://github.com/hyperledger/composer-sample-networks/blob/master/packages/carauction-network/test/CarAuction.js">here</a> simulates an entire auction and checks that the business logic functions as expected.</p>
+<h2 id="connect-to-composer"><a class="header-link" href="#connect-to-composer"></a>Connect to Composer</h2>
+<p>You can connect to Hyperledger Composer <a href="http://composer-playground.mybluemix.net">here</a>. If you have used Hyperledger Composer before you may need to clear your cached browser data.</p>
+<blockquote>
+<p>Hyperledger Composer currently only supports the web profile.</p>
+</blockquote>
+<p>After you are connected make sure that Hyperledger Composer is communicating with the <strong>&#39;hyperledger&#39;</strong> connection profile by clicking the network dropdown at the top-right of the menu. The web profile allows you to test in isolation using a simulated Hyperledger, storing the ledger in browser local storage. The &#39;bluemix&#39; connection profile is to a version of Hyperledger Composer deployed to bluemix.</p>
+<h2 id="setting-up-the-demo"><a class="header-link" href="#setting-up-the-demo"></a>Setting Up the Demo</h2>
+<p>Before you can hold an auction you need to create and invite some participants to your business network and have something to sell!</p>
+<h3 id="create-your-participant-&-issue-an-identity-card"><a class="header-link" href="#create-your-participant-&-issue-an-identity-card"></a>Create Your Participant &amp; Issue an Identity Card</h3>
+<p>Switch to the Test tab, then click on the <code>User</code> participant registry, then click on the <code>Create Participant</code> button to create a new instance of a user.</p>
+<p>The JSON representation of the User should be:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"$class"</span>: <span class="hljs-string">"org.acme.vehicle.auction.User"</span>,
+  <span class="hljs-attr">"email"</span>: <span class="hljs-string">"a.participant@example.com"</span>,
+  <span class="hljs-attr">"firstName"</span>: <span class="hljs-string">"Daniel"</span>,
+  <span class="hljs-attr">"lastName"</span>: <span class="hljs-string">"Selman"</span>,
+  <span class="hljs-attr">"balance"</span>: <span class="hljs-number">10000</span>
+}</code></pre><p>Substitute <code>a.participant@example.com</code> with your email address. Congratulations you are now a participant in this business network!</p>
+<blockquote>
+<p>Hyperledger Composer does not yet support issuing and managing Hyperledger Fabric identities.</p>
+</blockquote>
+<p>You now need to issue an identity card for this participant. Click the green ID card icon to the right of your participant. Enter an user id, for example <code>a.participant</code> and select the &quot;Identity can be used to issue other identities?&quot; checkbox so that this user has permission to invite other users into the business network.</p>
+<p>You can switch between identities using the menu option at the top right of the screen.</p>
+<h3 id="create-assets"><a class="header-link" href="#create-assets"></a>Create Assets</h3>
+<p>Now that you are a participant in the business network and have been issued an identity card you can own assets and take part in an auction.</p>
+<h4 id="create-a-vehicle"><a class="header-link" href="#create-a-vehicle"></a>Create a Vehicle</h4>
+<p>First, let&#39;s create a vehicle for auction.</p>
+<p>Click on the <code>Vehicle</code> asset registry, and then click on the <code>Create Asset</code> button to create a new instance of a vehicle that can be auctioned.</p>
+<p>The JSON representation of the Vehicle should be:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"$class"</span>: <span class="hljs-string">"org.acme.vehicle.auction.Vehicle"</span>,
+  <span class="hljs-attr">"vin"</span>: <span class="hljs-string">"CAR_001"</span>,
+  <span class="hljs-attr">"owner"</span>: <span class="hljs-string">"a.owner@example.com"</span>
+}</code></pre><p>Substitute <code>a.owner@example.com</code> for the id of the participant you created above. Congratulations you are now the owner of the vehicle <code>CAR_001</code>!</p>
+<h4 id="create-a-vehicle-listing"><a class="header-link" href="#create-a-vehicle-listing"></a>Create a Vehicle Listing</h4>
+<p>The <code>VehicleListing</code> asset is used to list vehicles that are available for auction.</p>
+<p>Click on the click on the <code>VehicleListing</code> asset registry, and then click on the <code>Create Asset</code> icon to create a new instance of a vehicle listing.</p>
+<p>The JSON representation of the <code>VehicleListing</code> should be:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"$class"</span>: <span class="hljs-string">"org.acme.vehicle.auction.VehicleListing"</span>,
+  <span class="hljs-attr">"listingId"</span>: <span class="hljs-string">"LISTING_001"</span>,
+  <span class="hljs-attr">"reservePrice"</span>: <span class="hljs-number">4000</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Ford Mustang"</span>,
+  <span class="hljs-attr">"state"</span>: <span class="hljs-string">"FOR_SALE"</span>,
+  <span class="hljs-attr">"vehicle"</span>: <span class="hljs-string">"CAR_001"</span>
+}</code></pre><p>Congratulations, you&#39;ve just listed your Ford Mustang for auction, with a reserve price of $4000!</p>
+<h3 id="create-additional-participants"><a class="header-link" href="#create-additional-participants"></a>Create Additional Participants</h3>
+<blockquote>
+<p>Hyperledger Composer does not yet support inviting participants via a URL</p>
+</blockquote>
+<p>An auction with one person is not much fun, so you need to either invite people to use Hyperledger Composer to create their own participants and identities, or you can do it for them. To make it easy for participants that you&#39;ve created to join the business network (auction) when an identity is issued a personalised URL is generated that you can send to allow participants to join the business network in a single click.</p>
+<p>You can send this text via email or Slack to give people an easy mechanism to launch Hyperledger Composer and join your business network.</p>
+<h2 id="bidding-on-a-vehiclelisting"><a class="header-link" href="#bidding-on-a-vehiclelisting"></a>Bidding on a VehicleListing</h2>
+<p>As soon as a <code>VehicleListing</code> has been created (and is in the <code>FOR_SALE</code> state) participants can submit <code>Offer</code> transactions to bid on a vehicle listing.</p>
+<p>Click on the Submit Transaction button to submit a new transaction for processing by the business network.</p>
+<p>The JSON payload should be:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"$class"</span>: <span class="hljs-string">"org.acme.vehicle.auction.Offer"</span>,
+  <span class="hljs-attr">"bidPrice"</span>: <span class="hljs-number">250.00</span>,
+  <span class="hljs-attr">"listing"</span>: <span class="hljs-string">"LISTING_001"</span>,
+  <span class="hljs-attr">"user"</span>: <span class="hljs-string">"a.bidder@example.com"</span>
+}</code></pre><p>Substitute the id of the participant submitting the transaction for <code>a.bidder@example.com</code> and set the bid price as high as you&#39;d like to bid. Remember the vehicle will only be sold if the reserve price is met and it will go to the highest bidder!</p>
+<p>The <code>Offer</code> transaction is processed by the <code>makeOffer</code> function described above.</p>
+<h2 id="end-the-auction"><a class="header-link" href="#end-the-auction"></a>End the Auction</h2>
+<p>To end the auction someone has to submit a <code>CloseBidding</code> transaction for the listing.</p>
+<p>Click on the Submit Transaction button to submit a new transaction for processing by the business network.</p>
+<p>The JSON payload should be:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"$class"</span>: <span class="hljs-string">"org.acme.vehicle.auction.CloseBidding"</span>,
+  <span class="hljs-attr">"listing"</span>: <span class="hljs-string">"LISTING_001"</span>
+}</code></pre><p>This simply indicates that the auction for <code>LISTING_001</code> is now closed, triggering the <code>closeBidding</code> function that was described above.</p>
+<h2 id="check-the-results-of-the-auction"><a class="header-link" href="#check-the-results-of-the-auction"></a>Check the Results of the Auction</h2>
+<p>To see if the Vehicle was sold you need to click on the <code>Vehicle</code> asset registry and then check the owner of CAR_001. If the reserve price was met you should see that the owner of the vehicle has been modified.</p>
+<p>If you check the state of the VehicleListing is should either be <code>SOLD</code> or <code>RESERVE_NOT_MET</code>.</p>
+<p>If you click on the &#39;User&#39; asset registry you can check the balance of each User. You should see that the balance of the buyer has been debited by the amount they bid, whilst the balance of the seller has been credited.</p>
+<h2 id="view-the-blockchain"><a class="header-link" href="#view-the-blockchain"></a>View the Blockchain</h2>
+<blockquote>
+<p>Not yet supported in Hyperledger Composer</p>
+</blockquote>
+<p>You can inspect the blocks and transaction created by Hyperledger during the course of the auction using the Hyperledger Explorer. Details TBD.</p>
+<h2 id="reset-the-auction"><a class="header-link" href="#reset-the-auction"></a>Reset the Auction</h2>
+<p>To reset the auction you need to edit the VehicleListing to reset its state to <code>FOR_SALE</code>. Simply click on the <code>VehicleListing</code> registry and then click the pencil icon to update the VehicleListing back to its original state.</p>
+<p>The JSON representation of the <code>VehicleListing</code> should be:</p>
+<pre class="hljs"><code>{
+  <span class="hljs-attr">"$class"</span>: <span class="hljs-string">"org.acme.vehicle.auction.VehicleListing"</span>,
+  <span class="hljs-attr">"listingId"</span>: <span class="hljs-string">"LISTING_001"</span>,
+  <span class="hljs-attr">"reservePrice"</span>: <span class="hljs-number">4000</span>,
+  <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Ford Mustang"</span>,
+  <span class="hljs-attr">"state"</span>: <span class="hljs-string">"FOR_SALE"</span>,
+  <span class="hljs-attr">"vehicle"</span>: <span class="hljs-string">"CAR_001"</span>
+}</code></pre>    </article>
+  </body>
+</html>

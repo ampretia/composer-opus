@@ -1,0 +1,16 @@
+
+# Business Network Definition Outline
+
+- {{name}}  {{version}}
+
+
+
+
+# Class Declarations Summary
+| Namespace | Name |
+| --------  | ---- |
+{% for cd in classdeclarations %} | {{cd.namespace}} | {{cd.name}} | 
+{% endfor %}
+
+
+{{readme}}

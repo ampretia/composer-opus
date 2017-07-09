@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const opus = require('../lib/opus');
 
 const yargs = require('yargs');

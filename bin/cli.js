@@ -24,12 +24,14 @@ let results = yargs
         default: 'default.njk',
         describe: 'Template file to use as basis for markdown',
         type: 'string'
-    }).option('r', {
-        alias: 'renderer',
-        default: 'markdown',
-        describe: 'Rendere to use for the final output',
+    }).option('n', {
+        alias: 'indexname',
+        demandOption: false,
+        default: 'bnd-opus.md',
+        describe: 'Name of the generated markdown file',
         type: 'string'
-    }).strict()
+    })
+    .strict()
     .help().argv;
 
 

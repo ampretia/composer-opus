@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 const opus = require('../lib/opus');
-
 const yargs = require('yargs');
 
-// CLI to move it it's own file
+// Standard Command yargs processing.
 let results = yargs
     .option('a', {
         alias: 'archive',
@@ -33,7 +32,6 @@ let results = yargs
     })
     .strict()
     .help().argv;
-
 
 opus(results);
 

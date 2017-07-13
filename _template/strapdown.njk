@@ -1,29 +1,9 @@
 <!DOCTYPE html>
 <html>
-<title>{{name}}</title>
+<title>{{core.name}}</title>
 
-
-# Business Network Definition Outline
-
-- {{name}}  {{version}}
-
-
-
-
-# Class Declarations Summary
-| Namespace | Name |
-| --------  | ---- |
-{% for cd in classdeclarations %} | {{cd.namespace}} | {{cd.name}} | 
-{% endfor %}
-
-
-# Transaction Functions Summary
-
-# ACL Summary
-
-
-
-{{readme}}
+<xmp>
+{% include "default.njk" %}
 </xmp>
 
 <script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>

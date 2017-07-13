@@ -1,35 +1,59 @@
+<!DOCTYPE html>
+<html>
+<title>carauction-network</title>
 
+<xmp>
 # Business Network Definition Outline
 
-- carauction-network  0.1.0
+*Name*: carauction-network 
+*Version*: 0.1.0
+
+## Asset Definition Summaries
+| Namespace | Name | Description |
+| --------  | ---- | ----------- |
+| org.hyperledger.composer.system.Asset | Asset | An asset named Asset  |
+| org.acme.vehicle.auction.Vehicle | Vehicle | An asset named Vehicle  |
+| org.acme.vehicle.auction.VehicleListing | VehicleListing | An asset named VehicleListing  |
 
 
+## Transaction Definition Summaries
+| Namespace | Name | Description |
+| --------  | ---- | ----------- |
+| org.hyperledger.composer.system.Transaction | Transaction | A transaction named Transaction  |
+| org.acme.vehicle.auction.Offer | Offer | A transaction named Offer  |
+| org.acme.vehicle.auction.CloseBidding | CloseBidding | A transaction named CloseBidding  |
 
 
-# Class Declarations Summary
-| Namespace | Name |
-| --------  | ---- |
- | org.hyperledger.composer.system | Asset | 
- | org.hyperledger.composer.system | Participant | 
- | org.hyperledger.composer.system | Transaction | 
- | org.hyperledger.composer.system | Event | 
- | org.acme.vehicle.auction | Vehicle | 
- | org.acme.vehicle.auction | ListingState | 
- | org.acme.vehicle.auction | VehicleListing | 
- | org.acme.vehicle.auction | User | 
- | org.acme.vehicle.auction | Member | 
- | org.acme.vehicle.auction | Auctioneer | 
- | org.acme.vehicle.auction | Offer | 
- | org.acme.vehicle.auction | CloseBidding | 
+## Participant Definition Summaries
+| Namespace | Name | Description |
+| --------  | ---- | ----------- |
+| org.hyperledger.composer.system.Participant | Participant | An participant named Participant  |
+| org.acme.vehicle.auction.User | User | An participant named User  |
+| org.acme.vehicle.auction.Member | Member | An participant named Member  |
+| org.acme.vehicle.auction.Auctioneer | Auctioneer | An participant named Auctioneer  |
 
 
-
-# Transaction Functions Summary
-
-# ACL Summary
+## ACL Summary
 
 
+## Details
 
+### Transaction Functions
+
+_wip_
+
+### Asset Model
+
+_wip_
+
+### ACLs
+
+
+### Queries
+
+_wip_
+
+# Network Readme
 # Hyperledger Composer Car Auction Demo
 
 This is an interactive, distributed, car auction demo, backed by Hyperledger Fabric. Invite participants to join your distributed auction, list assets for sale (setting a reserve price), and watch as assets that have met their reserve price are automatically transferred to the highest bidder at the end of the auction.
@@ -218,3 +242,8 @@ The JSON representation of the `VehicleListing` should be:
   "vehicle": "CAR_001"
 }
 ```
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>

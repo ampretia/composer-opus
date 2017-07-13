@@ -29,7 +29,15 @@
 
 ### Transaction Functions
 
-_wip_
+{% for fn in scripts.files %}
+*Identifier* {{fn.identifier}}
+*Functions*
+{% for f in fn.functions %}
+```
+{{f.text}}
+``` 
+{% endfor %}
+{% endfor %}
 
 ### Asset Model
 

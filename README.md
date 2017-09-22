@@ -1,3 +1,6 @@
+
+[![Coverage Status](https://coveralls.io/repos/github/ampretia/composer-opus/badge.svg?branch=master)](https://coveralls.io/github/ampretia/composer-opus?branch=master)
+
 # Hyperledger Composer Opus
 
 A Proof-Of-Idea to see if the power of template engines, plus the Introspector API, and the NPM meta-data in a Compser BusinessNeworkArchive could be used to generate a set of documentation for the archive.  

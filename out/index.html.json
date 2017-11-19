@@ -1,0 +1,985 @@
+{
+        "core": {
+                "name": "metal-commodity-network",
+                "version": "0.1.7",
+                "readme": "# Commodity Network\n\n> This Business Network illustrates commodity trading.\n\nThis business network defines:\n\n**Participant**\n`Regulator`\n\n**Participant**\n`Trader`\n\n**Asset**\n`Commodity`\n\n**Transaction(s)**\n`Transaction`\n\n**Event**\n`TradeNotification `\n\nTo test this Business Network Definition in the **Test** tab:\n\nCreate two `Trader` participants:\n\n```\n{\n  \"$class\": \"org.acme.trading.Trader\",\n  \"tradeId\": \"TRADER1\",\n  \"firstName\": \"Jenny\",\n  \"lastName\": \"Jones\"\n}\n```\n\n```\n{\n  \"$class\": \"org.acme.trading.Trader\",\n  \"tradeId\": \"TRADER2\",\n  \"firstName\": \"Amy\",\n  \"lastName\": \"Williams\"\n}\n```\n\nCreate a `Commodity` asset:\n\n```\n{\n  \"$class\": \"org.acme.trading.Commodity\",\n  \"tradingSymbol\": \"ABC\",\n  \"description\": \"Test commodity\",\n  \"mainExchange\": \"Euronext\",\n  \"quantity\": 72.297,\n  \"owner\": \"resource:org.acme.trading.Trader#TRADER1\"\n}\n```\n\nSubmit a `Trade` transaction:\n\n```\n{\n  \"$class\": \"org.acme.trading.Trade\",\n  \"commodity\": \"resource:org.acme.trading.Commodity#ABC\",\n  \"newOwner\": \"resource:org.acme.trading.Trader#TRADER2\"\n}\n```\n\nAfter submitting this transaction, you should now see the transaction in the transaction registry. As a result, the owner of the commodity `ABC` should now be owned `TRADER2` in the Asset Registry.\n\nCongratulations!\n"
+        },
+        "types": {
+                "asset": [
+                        {
+                                "fqn": "org.hyperledger.composer.system.Asset",
+                                "name": "Asset",
+                                "description": "An asset named Asset",
+                                "type": "asset",
+                                "properties": {}
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.Registry",
+                                "name": "Registry",
+                                "description": "An asset named Registry",
+                                "type": "asset",
+                                "properties": {
+                                        "registryId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "name": {
+                                                "type": "string"
+                                        },
+                                        "type": {
+                                                "type": "string"
+                                        },
+                                        "system": {
+                                                "type": "boolean"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.AssetRegistry",
+                                "name": "AssetRegistry",
+                                "description": "An asset named AssetRegistry",
+                                "type": "asset",
+                                "properties": {
+                                        "registryId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "name": {
+                                                "type": "string"
+                                        },
+                                        "type": {
+                                                "type": "string"
+                                        },
+                                        "system": {
+                                                "type": "boolean"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.ParticipantRegistry",
+                                "name": "ParticipantRegistry",
+                                "description": "An asset named ParticipantRegistry",
+                                "type": "asset",
+                                "properties": {
+                                        "registryId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "name": {
+                                                "type": "string"
+                                        },
+                                        "type": {
+                                                "type": "string"
+                                        },
+                                        "system": {
+                                                "type": "boolean"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.TransactionRegistry",
+                                "name": "TransactionRegistry",
+                                "description": "An asset named TransactionRegistry",
+                                "type": "asset",
+                                "properties": {
+                                        "registryId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "name": {
+                                                "type": "string"
+                                        },
+                                        "type": {
+                                                "type": "string"
+                                        },
+                                        "system": {
+                                                "type": "boolean"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.Network",
+                                "name": "Network",
+                                "description": "An asset named Network",
+                                "type": "asset",
+                                "properties": {
+                                        "networkId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.HistorianRecord",
+                                "name": "HistorianRecord",
+                                "description": "An asset named HistorianRecord",
+                                "type": "asset",
+                                "properties": {
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "transactionType": {
+                                                "type": "string"
+                                        },
+                                        "transactionInvoked": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Transaction"
+                                        },
+                                        "participantInvoking": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Participant"
+                                        },
+                                        "identityUsed": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Identity"
+                                        },
+                                        "eventsEmitted": {
+                                                "type": "array",
+                                                "items": {
+                                                        "properties": {
+                                                                "eventId": {
+                                                                        "type": "string",
+                                                                        "description": "The instance identifier for this type"
+                                                                },
+                                                                "timestamp": {
+                                                                        "format": "date-time",
+                                                                        "type": "string"
+                                                                }
+                                                        },
+                                                        "required": [
+                                                                "eventId",
+                                                                "timestamp"
+                                                        ],
+                                                        "type": "object",
+                                                        "description": "An instance of org.hyperledger.composer.system.Event"
+                                                }
+                                        },
+                                        "transactionTimestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.Identity",
+                                "name": "Identity",
+                                "description": "An asset named Identity",
+                                "type": "asset",
+                                "properties": {
+                                        "identityId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "name": {
+                                                "type": "string"
+                                        },
+                                        "issuer": {
+                                                "type": "string"
+                                        },
+                                        "certificate": {
+                                                "type": "string"
+                                        },
+                                        "state": {
+                                                "type": "enum",
+                                                "enum": [
+                                                        "ISSUED",
+                                                        "BOUND",
+                                                        "ACTIVATED",
+                                                        "REVOKED"
+                                                ]
+                                        },
+                                        "participant": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Participant"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.acme.trading.Commodity",
+                                "name": "Commodity",
+                                "description": "An asset named Commodity",
+                                "type": "asset",
+                                "properties": {
+                                        "tradingSymbol": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "description": {
+                                                "type": "string"
+                                        },
+                                        "mainExchange": {
+                                                "type": "string"
+                                        },
+                                        "quantity": {
+                                                "type": "number"
+                                        },
+                                        "owner": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.acme.trading.Trader"
+                                        }
+                                }
+                        }
+                ],
+                "transaction": [
+                        {
+                                "fqn": "org.hyperledger.composer.system.Transaction",
+                                "name": "Transaction",
+                                "description": "A transaction named Transaction",
+                                "type": "transaction",
+                                "properties": {
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.RegistryTransaction",
+                                "name": "RegistryTransaction",
+                                "description": "A transaction named RegistryTransaction",
+                                "type": "transaction",
+                                "properties": {
+                                        "targetRegistry": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Registry"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.AssetTransaction",
+                                "name": "AssetTransaction",
+                                "description": "A transaction named AssetTransaction",
+                                "type": "transaction",
+                                "properties": {
+                                        "resources": {
+                                                "type": "array",
+                                                "items": {
+                                                        "properties": {},
+                                                        "required": [],
+                                                        "type": "object",
+                                                        "description": "An instance of org.hyperledger.composer.system.Asset"
+                                                }
+                                        },
+                                        "targetRegistry": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Registry"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.ParticipantTransaction",
+                                "name": "ParticipantTransaction",
+                                "description": "A transaction named ParticipantTransaction",
+                                "type": "transaction",
+                                "properties": {
+                                        "resources": {
+                                                "type": "array",
+                                                "items": {
+                                                        "properties": {},
+                                                        "required": [],
+                                                        "type": "object",
+                                                        "description": "An instance of org.hyperledger.composer.system.Participant"
+                                                }
+                                        },
+                                        "targetRegistry": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Registry"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.AddAsset",
+                                "name": "AddAsset",
+                                "description": "A transaction named AddAsset",
+                                "type": "transaction",
+                                "properties": {
+                                        "resources": {
+                                                "type": "array",
+                                                "items": {
+                                                        "properties": {},
+                                                        "required": [],
+                                                        "type": "object",
+                                                        "description": "An instance of org.hyperledger.composer.system.Asset"
+                                                }
+                                        },
+                                        "targetRegistry": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Registry"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.UpdateAsset",
+                                "name": "UpdateAsset",
+                                "description": "A transaction named UpdateAsset",
+                                "type": "transaction",
+                                "properties": {
+                                        "resources": {
+                                                "type": "array",
+                                                "items": {
+                                                        "properties": {},
+                                                        "required": [],
+                                                        "type": "object",
+                                                        "description": "An instance of org.hyperledger.composer.system.Asset"
+                                                }
+                                        },
+                                        "targetRegistry": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Registry"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.RemoveAsset",
+                                "name": "RemoveAsset",
+                                "description": "A transaction named RemoveAsset",
+                                "type": "transaction",
+                                "properties": {
+                                        "resourceIds": {
+                                                "type": "array",
+                                                "items": {
+                                                        "type": "string"
+                                                }
+                                        },
+                                        "resources": {
+                                                "type": "array",
+                                                "items": {
+                                                        "properties": {},
+                                                        "required": [],
+                                                        "type": "object",
+                                                        "description": "An instance of org.hyperledger.composer.system.Asset"
+                                                }
+                                        },
+                                        "targetRegistry": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Registry"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.AddParticipant",
+                                "name": "AddParticipant",
+                                "description": "A transaction named AddParticipant",
+                                "type": "transaction",
+                                "properties": {
+                                        "resources": {
+                                                "type": "array",
+                                                "items": {
+                                                        "properties": {},
+                                                        "required": [],
+                                                        "type": "object",
+                                                        "description": "An instance of org.hyperledger.composer.system.Participant"
+                                                }
+                                        },
+                                        "targetRegistry": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Registry"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.UpdateParticipant",
+                                "name": "UpdateParticipant",
+                                "description": "A transaction named UpdateParticipant",
+                                "type": "transaction",
+                                "properties": {
+                                        "resources": {
+                                                "type": "array",
+                                                "items": {
+                                                        "properties": {},
+                                                        "required": [],
+                                                        "type": "object",
+                                                        "description": "An instance of org.hyperledger.composer.system.Participant"
+                                                }
+                                        },
+                                        "targetRegistry": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Registry"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.RemoveParticipant",
+                                "name": "RemoveParticipant",
+                                "description": "A transaction named RemoveParticipant",
+                                "type": "transaction",
+                                "properties": {
+                                        "resourceIds": {
+                                                "type": "array",
+                                                "items": {
+                                                        "type": "string"
+                                                }
+                                        },
+                                        "resources": {
+                                                "type": "array",
+                                                "items": {
+                                                        "properties": {},
+                                                        "required": [],
+                                                        "type": "object",
+                                                        "description": "An instance of org.hyperledger.composer.system.Participant"
+                                                }
+                                        },
+                                        "targetRegistry": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Registry"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.IssueIdentity",
+                                "name": "IssueIdentity",
+                                "description": "A transaction named IssueIdentity",
+                                "type": "transaction",
+                                "properties": {
+                                        "participant": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Participant"
+                                        },
+                                        "identityName": {
+                                                "type": "string"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.BindIdentity",
+                                "name": "BindIdentity",
+                                "description": "A transaction named BindIdentity",
+                                "type": "transaction",
+                                "properties": {
+                                        "participant": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Participant"
+                                        },
+                                        "certificate": {
+                                                "type": "string"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.ActivateCurrentIdentity",
+                                "name": "ActivateCurrentIdentity",
+                                "description": "A transaction named ActivateCurrentIdentity",
+                                "type": "transaction",
+                                "properties": {
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.RevokeIdentity",
+                                "name": "RevokeIdentity",
+                                "description": "A transaction named RevokeIdentity",
+                                "type": "transaction",
+                                "properties": {
+                                        "identity": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.hyperledger.composer.system.Identity"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.UpdateBusinessNetwork",
+                                "name": "UpdateBusinessNetwork",
+                                "description": "A transaction named UpdateBusinessNetwork",
+                                "type": "transaction",
+                                "properties": {
+                                        "businessNetworkArchive": {
+                                                "type": "string"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.acme.trading.Trade",
+                                "name": "Trade",
+                                "description": "A transaction named Trade",
+                                "type": "transaction",
+                                "properties": {
+                                        "commodity": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.acme.trading.Commodity"
+                                        },
+                                        "newOwner": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.acme.trading.Trader"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.acme.trading.TraderById",
+                                "name": "TraderById",
+                                "description": "A transaction named TraderById",
+                                "type": "transaction",
+                                "properties": {
+                                        "tradeId": {
+                                                "type": "string"
+                                        },
+                                        "tradingSymbol": {
+                                                "type": "string"
+                                        },
+                                        "qty": {
+                                                "type": "number"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.acme.trading.BulkTrade",
+                                "name": "BulkTrade",
+                                "description": "A transaction named BulkTrade",
+                                "type": "transaction",
+                                "properties": {
+                                        "commodity": {
+                                                "type": "array",
+                                                "items": {
+                                                        "type": "string",
+                                                        "description": "The identifier of an instance of org.acme.trading.Commodity"
+                                                }
+                                        },
+                                        "newOwner": {
+                                                "type": "string",
+                                                "description": "The identifier of an instance of org.acme.trading.Trader"
+                                        },
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.acme.trading.RemoveHighQuantityCommodities",
+                                "name": "RemoveHighQuantityCommodities",
+                                "description": "A transaction named RemoveHighQuantityCommodities",
+                                "type": "transaction",
+                                "properties": {
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.acme.trading._demoSetup",
+                                "name": "_demoSetup",
+                                "description": "A transaction named _demoSetup",
+                                "type": "transaction",
+                                "properties": {
+                                        "transactionId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "timestamp": {
+                                                "format": "date-time",
+                                                "type": "string"
+                                        }
+                                }
+                        }
+                ],
+                "concept": [],
+                "enum": [],
+                "participant": [
+                        {
+                                "fqn": "org.hyperledger.composer.system.Participant",
+                                "name": "Participant",
+                                "description": "An participant named Participant",
+                                "type": "participant",
+                                "properties": {}
+                        },
+                        {
+                                "fqn": "org.hyperledger.composer.system.NetworkAdmin",
+                                "name": "NetworkAdmin",
+                                "description": "An participant named NetworkAdmin",
+                                "type": "participant",
+                                "properties": {
+                                        "participantId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.acme.trading.Trader",
+                                "name": "Trader",
+                                "description": "An participant named Trader",
+                                "type": "participant",
+                                "properties": {
+                                        "tradeId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "firstName": {
+                                                "type": "string"
+                                        },
+                                        "lastName": {
+                                                "type": "string"
+                                        }
+                                }
+                        },
+                        {
+                                "fqn": "org.acme.trading.Regulator",
+                                "name": "Regulator",
+                                "description": "An participant named Regulator",
+                                "type": "participant",
+                                "properties": {
+                                        "regId": {
+                                                "type": "string",
+                                                "description": "The instance identifier for this type"
+                                        },
+                                        "firstName": {
+                                                "type": "string"
+                                        },
+                                        "lastName": {
+                                                "type": "string"
+                                        },
+                                        "office": {
+                                                "type": "string"
+                                        }
+                                }
+                        }
+                ]
+        },
+        "scripts": {
+                "files": [
+                        {
+                                "identifier": "lib/logic.js",
+                                "name": "lib/logic.js",
+                                "functions": [
+                                        {
+                                                "text": "function tradeCommodity(trade) {\n\n    // set the new owner of the commodity\n    trade.commodity.owner = trade.newOwner;\n    return getAssetRegistry('org.acme.trading.Commodity')\n        .then(function (assetRegistry) {\n\n            // emit a notification that a trade has occurred\n            var tradeNotification = getFactory().newEvent('org.acme.trading', 'TradeNotification');\n            tradeNotification.commodity = trade.commodity;\n            emit(tradeNotification);\n\n            // persist the state of the commodity\n            return assetRegistry.update(trade.commodity);\n        });\n}"
+                                        },
+                                        {
+                                                "text": "function TradeById(tradeById){\n    var commodityRegistry;\n    return getAssetRegistry('org.acme.trading.Commodity')\n    .then(function(registry){\n        commodityRegistry=registry;\n        return commodityRegistry.get(tradeById.tradingSymbol);\n    })\n    .then(function(result){\n        result.quantity-=tradeById.qty;\n        return commodityRegistry.update(result);\n    });\n\n}"
+                                        },
+                                        {
+                                                "text": "function removeHighQuantityCommodities(remove) {\n\n    return getAssetRegistry('org.acme.trading.Commodity')\n        .then(function (assetRegistry) {\n            return query('selectCommoditiesWithHighQuantity')\n                    .then(function (results) {\n\n                        var promises = [];\n\n                        for (var n = 0; n < results.length; n++) {\n                            var trade = results[n];\n\n                            // emit a notification that a trade was removed\n                            var removeNotification = getFactory().newEvent('org.acme.trading', 'RemoveNotification');\n                            removeNotification.commodity = trade;\n                            emit(removeNotification);\n\n                            // remove the commodity\n                            promises.push(assetRegistry.remove(trade));\n                        }\n\n                        // we have to return all the promises\n                        return Promise.all(promises);\n                    });\n        });\n}"
+                                        },
+                                        {
+                                                "text": "function setup(){\n    var factory = getFactory();\n \tvar NS = 'org.acme.trading';\n    var traders = [\n      factory.newResource(NS,'Trader','CAROLINE'),\n      factory.newResource(NS,'Trader','TRACY'),\n      factory.newResource(NS,'Trader','TOM'),\n      factory.newResource(NS,'Trader','WHOLESALER')\n    ];\n    \n                          \n    var commodities = [\n      factory.newResource(NS,'Commodity','Ag'),\n      factory.newResource(NS,'Commodity','Pb'),\n      factory.newResource(NS,'Commodity','Fe'),\n      factory.newResource(NS,'Commodity','Cu')\n      ];\n \n    /* add the resource and the traders */\n    return getParticipantRegistry(NS+'.Trader')\n  .then(function(traderRegistry){\n            traders.forEach(function(trader) {\n         \n          trader.firstName = trader.getIdentifier().toLowerCase();\n          trader.lastName = 'Trader';\n      });\n      return traderRegistry.addAll(traders);\n    })\n  .then(function(){\n    \treturn getAssetRegistry(NS+'.Commodity');\n    })\n  .then(function(assetRegistry){\n      var qty=5;\n      commodities.forEach(function(commodity) {\n        commodity.description='A lot of '+commodity.getIdentifier();\n        commodity.mainExchange='Hursley';\n        commodity.quantity = (qty);\n        commodity.owner = factory.newRelationship(NS,'Trader','WHOLESALER');\n        qty+=10;\n      })\n      return assetRegistry.addAll(commodities);\n    });\n  \n}"
+                                        }
+                                ]
+                        }
+                ]
+        },
+        "acls": {
+                "rules": [
+                        {
+                                "description": "Allow traders to see the assets that are for sale",
+                                "name": "Wholesaler",
+                                "verb": [
+                                        "READ",
+                                        "UPDATE"
+                                ],
+                                "noun": "org.acme.trading.Commodity",
+                                "participant": "ModelBinding org.acme.trading.Trader",
+                                "transaction": null,
+                                "predicate": "v.owner.getIdentifier() == 'WHOLESALER'",
+                                "action": "ALLOW"
+                        },
+                        {
+                                "description": "System ACL to permit all access",
+                                "name": "Allnetwork",
+                                "verb": [
+                                        "ALL"
+                                ],
+                                "noun": "org.acme.trading.**",
+                                "participant": "ModelBinding org.hyperledger.composer.system.Participant",
+                                "transaction": null,
+                                "predicate": "true",
+                                "action": "ALLOW"
+                        },
+                        {
+                                "description": "Allow traders to see the assets that they own",
+                                "name": "TradersAssets",
+                                "verb": [
+                                        "ALL"
+                                ],
+                                "noun": "org.acme.trading.Commodity",
+                                "participant": "ModelBinding org.acme.trading.Trader:t",
+                                "transaction": null,
+                                "predicate": "v.owner.getIdentifier() != t.getIdentifier()",
+                                "action": "DENY"
+                        },
+                        {
+                                "description": "Make the commodities themselves visible",
+                                "name": "CommoditiesView",
+                                "verb": [
+                                        "ALL"
+                                ],
+                                "noun": "org.acme.trading.Commodity",
+                                "participant": "ModelBinding org.acme.trading.Trader",
+                                "transaction": null,
+                                "predicate": "true",
+                                "action": "ALLOW"
+                        },
+                        {
+                                "description": "Allow traders to submit trades",
+                                "name": "MakeTrades_1",
+                                "verb": [
+                                        "ALL"
+                                ],
+                                "noun": "org.acme.trading.Trade",
+                                "participant": "ModelBinding org.acme.trading.Trader",
+                                "transaction": null,
+                                "predicate": "true",
+                                "action": "ALLOW"
+                        },
+                        {
+                                "description": "Allow traders to submit trades",
+                                "name": "MakeTrades_2",
+                                "verb": [
+                                        "ALL"
+                                ],
+                                "noun": "org.acme.trading.BulkTrade",
+                                "participant": "ModelBinding org.acme.trading.Trader",
+                                "transaction": null,
+                                "predicate": "true",
+                                "action": "ALLOW"
+                        },
+                        {
+                                "description": "Allow traders to submit trades",
+                                "name": "MakeTrades_3",
+                                "verb": [
+                                        "ALL"
+                                ],
+                                "noun": "org.acme.trading.TraderById",
+                                "participant": "ModelBinding org.acme.trading.Trader",
+                                "transaction": null,
+                                "predicate": "true",
+                                "action": "ALLOW"
+                        },
+                        {
+                                "description": "Trader can see their own participant",
+                                "name": "TraderSeeThemselves",
+                                "verb": [
+                                        "ALL"
+                                ],
+                                "noun": "org.acme.trading.Trader",
+                                "participant": "ModelBinding org.acme.trading.Trader:t",
+                                "transaction": null,
+                                "predicate": "v.getIdentifier() == t.getIdentifier()",
+                                "action": "ALLOW"
+                        },
+                        {
+                                "description": "Regulator can see all the trading assets etc. ",
+                                "name": "Regulator",
+                                "verb": [
+                                        "ALL"
+                                ],
+                                "noun": "org.acme.trading.**",
+                                "participant": "ModelBinding org.acme.trading.Regulator",
+                                "transaction": null,
+                                "predicate": "true",
+                                "action": "ALLOW"
+                        },
+                        {
+                                "description": "Traders should be able to see the history of the own transactions",
+                                "name": "TradersSeeOwnTransactions",
+                                "verb": [
+                                        "READ"
+                                ],
+                                "noun": "org.hyperledger.composer.system.HistorianRecord",
+                                "participant": "ModelBinding org.acme.trading.Trader:t",
+                                "transaction": null,
+                                "predicate": "v.participantInvoking.getIdentifier() == t.getIdentifier()",
+                                "action": "ALLOW"
+                        },
+                        {
+                                "description": "Traders can't see the record of what has happened in the business network",
+                                "name": "DenyHistorian",
+                                "verb": [
+                                        "READ",
+                                        "UPDATE",
+                                        "DELETE"
+                                ],
+                                "noun": "org.hyperledger.composer.system.HistorianRecord",
+                                "participant": "ModelBinding org.acme.trading.Trader",
+                                "transaction": null,
+                                "predicate": "true",
+                                "action": "DENY"
+                        },
+                        {
+                                "description": "System ACL to permit all access",
+                                "name": "NetworkUpdate",
+                                "verb": [
+                                        "READ"
+                                ],
+                                "noun": "org.hyperledger.composer.system.Network",
+                                "participant": "ModelBinding org.acme.trading.Trader",
+                                "transaction": null,
+                                "predicate": "true",
+                                "action": "ALLOW"
+                        },
+                        {
+                                "description": "System ACL to permit all access",
+                                "name": "SystemACL",
+                                "verb": [
+                                        "ALL"
+                                ],
+                                "noun": "org.hyperledger.composer.system.**",
+                                "participant": "ModelBinding org.hyperledger.composer.system.Participant",
+                                "transaction": null,
+                                "predicate": "true",
+                                "action": "ALLOW"
+                        }
+                ]
+        },
+        "queries": [
+                {
+                        "description": "Select all commodities",
+                        "name": "selectCommodities",
+                        "selector": "SELECT org.acme.trading.Commodity\n"
+                },
+                {
+                        "description": "Select all commodities based on their main exchange",
+                        "name": "selectCommoditiesByExchange",
+                        "selector": "SELECT org.acme.trading.Commodity\n          WHERE (mainExchange==_$exchange)\n"
+                },
+                {
+                        "description": "Select all commodities based on their owner",
+                        "name": "selectCommoditiesByOwner",
+                        "selector": "SELECT org.acme.trading.Commodity\n          WHERE (owner == _$owner)\n"
+                },
+                {
+                        "description": "Select commodities based on quantity",
+                        "name": "selectCommoditiesWithHighQuantity",
+                        "selector": "SELECT org.acme.trading.Commodity\n          WHERE (quantity > 60)\n"
+                }
+        ]
+}

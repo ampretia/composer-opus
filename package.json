@@ -13,12 +13,13 @@
   "author": "MBW",
   "license": "Apache-2",
   "devDependencies": {
-    "mermaid": "^7.0.3"
+    "mermaid": "^7.1.0"
   },
   "dependencies": {
-    "chalk": "^2.0.1",
+    "chalk": "^2.3.0",
     "composer-admin": "^0.12.2",
     "composer-client": "^0.12.2",
+    "js2flowchart": "^1.1.0",
     "markdown-it": "^8.4.0",
     "mkdirp": "^0.5.1",
     "nunjucks": "^3.0.1",

@@ -59,3 +59,4 @@ typings/
 
 # default output place
 logs/
+out/

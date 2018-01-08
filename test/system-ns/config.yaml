@@ -1,0 +1,53 @@
+--- 
+processtree:
+   _nodeid : root
+   _desc : "root node that defines common data for all nodes"
+   processor : root
+   meta :
+      outputdir : ${_args.outdir}
+      templateroot: _template
+      tempdir : _tmp     
+   _sub :
+    -   _nodeid : ParseNetwork
+        _notes: "Uses the network to setup the context"
+        processor : composernetwork
+        meta :
+          archive : "${_args.archive}"
+          systemns : true
+        _sub :
+    -   _nodeid : CreateMarkdown
+        _notes: "Uses multiple templates specified in 'inputdir' & 'pattern' to work on the context and produce output"
+        processor : njk_multi
+        meta :
+          inputdir : "phase1-markdown"
+          pattern : "**/*.njk"
+          outputextension : ".md"
+          outputdir : "${root.tempdir}"
+# Phase 2 - produce the html          
+    -   _nodeid : HTML
+        _notes : "From the markdown files that are created previously generate html"
+        processor: stream
+        meta :
+          inputdir : "${root.tempdir}"
+          pattern : "**/*.md"
+          outputdir : "${_args.outdir}"          
+        _sub :
+           -  _nodeid : markdownhtml
+              _notes : "For each markdown file, this will convert into html and pass on the details via the stream"
+              processor : markdownit
+              meta:
+                 k : v
+           -  _nodeid : htmlrender
+              _notes : "Single template to be used to process files via stream along with the context"
+              processor : njk_single
+              meta :
+                inputdir : "phase2-html"
+                template : html.default.njk
+                extension: ".html"
+    -  _nodeid : FinalStep
+       _notes : "Need to copy the fixed assets to the output directory "
+       processor : copy
+       meta :
+          srcdir : "${root.templateroot}/assets.default/**/*" 
+          destdir : "${_args.outdir}/assets"  
+         

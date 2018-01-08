@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+const opus = require('../lib/tree');
+const yargs = require('yargs');
+
+// Standard Command yargs processing.
+let results = yargs
+
+    .option('a', {
+        alias: 'archive',
+        demandOption: true,
+        describe: 'Archive file to document',
+        type: 'string'
+    })
+    .strict()
+    .help().argv;
+
+opus(results);
+

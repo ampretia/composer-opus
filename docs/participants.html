@@ -79,151 +79,68 @@
 
                 <div class="page-content-grid">
                     <section class="content-chunk" id="readme">
-                    <h1 id="commodity-network">Commodity Network</h1>
-<blockquote>
-<p>This Business Network illustrates commodity trading.</p>
-</blockquote>
-<p>This business network defines:</p>
-<p><strong>Participant</strong>
-<code>Regulator</code></p>
-<p><strong>Participant</strong>
-<code>Trader</code></p>
-<p><strong>Asset</strong>
-<code>Commodity</code></p>
-<p><strong>Transaction(s)</strong>
-<code>Transaction</code></p>
-<p><strong>Event</strong>
-<code>TradeNotification</code></p>
-<p>To test this Business Network Definition in the <strong>Test</strong> tab:</p>
-<p>Create two <code>Trader</code> participants:</p>
-<pre><code>{
-  &quot;$class&quot;: &quot;org.acme.trading.Trader&quot;,
-  &quot;tradeId&quot;: &quot;TRADER1&quot;,
-  &quot;firstName&quot;: &quot;Jenny&quot;,
-  &quot;lastName&quot;: &quot;Jones&quot;
-}
-</code></pre>
-<pre><code>{
-  &quot;$class&quot;: &quot;org.acme.trading.Trader&quot;,
-  &quot;tradeId&quot;: &quot;TRADER2&quot;,
-  &quot;firstName&quot;: &quot;Amy&quot;,
-  &quot;lastName&quot;: &quot;Williams&quot;
-}
-</code></pre>
-<p>Create a <code>Commodity</code> asset:</p>
-<pre><code>{
-  &quot;$class&quot;: &quot;org.acme.trading.Commodity&quot;,
-  &quot;tradingSymbol&quot;: &quot;ABC&quot;,
-  &quot;description&quot;: &quot;Test commodity&quot;,
-  &quot;mainExchange&quot;: &quot;Euronext&quot;,
-  &quot;quantity&quot;: 72.297,
-  &quot;owner&quot;: &quot;resource:org.acme.trading.Trader#TRADER1&quot;
-}
-</code></pre>
-<p>Submit a <code>Trade</code> transaction:</p>
-<pre><code>{
-  &quot;$class&quot;: &quot;org.acme.trading.Trade&quot;,
-  &quot;commodity&quot;: &quot;resource:org.acme.trading.Commodity#ABC&quot;,
-  &quot;newOwner&quot;: &quot;resource:org.acme.trading.Trader#TRADER2&quot;
-}
-</code></pre>
-<p>After submitting this transaction, you should now see the transaction in the transaction registry. As a result, the owner of the commodity <code>ABC</code> should now be owned <code>TRADER2</code> in the Asset Registry.</p>
-<p>Congratulations!</p>
-<h1 id="summaries">Summaries</h1>
-<h2 id="asset-definition">Asset Definition</h2>
+                    <h1 id="particpant-model">Particpant Model</h1>
+<h4 id="trader">Trader</h4>
+<p><strong>org.acme.trading.Trader</strong> - <strong>An participant named Trader</strong></p>
 <table>
 <thead>
 <tr>
-<th>Namespace</th>
 <th>Name</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>org.acme.trading.SampleAsset</td>
-<td>SampleAsset</td>
-<td>An asset named SampleAsset</td>
+<td>tradeId</td>
+<td>string</td>
+<td>The instance identifier for this type</td>
 </tr>
 <tr>
-<td>org.acme.trading.Commodity</td>
-<td>Commodity</td>
-<td>An asset named Commodity</td>
+<td>firstName</td>
+<td>string</td>
+<td></td>
 </tr>
 <tr>
-<td>org.acme.trading.AnotherCommodity</td>
-<td>AnotherCommodity</td>
-<td>An asset named AnotherCommodity</td>
+<td>lastName</td>
+<td>string</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="transaction-definition">Transaction Definition</h2>
+<h4 id="regulator">Regulator</h4>
+<p><strong>org.acme.trading.Regulator</strong> - <strong>An participant named Regulator</strong></p>
 <table>
 <thead>
 <tr>
-<th>Namespace</th>
 <th>Name</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>org.acme.trading.Trade</td>
-<td>Trade</td>
-<td>A transaction named Trade</td>
+<td>regId</td>
+<td>string</td>
+<td>The instance identifier for this type</td>
 </tr>
 <tr>
-<td>org.acme.trading.TraderById</td>
-<td>TraderById</td>
-<td>A transaction named TraderById</td>
+<td>firstName</td>
+<td>string</td>
+<td></td>
 </tr>
 <tr>
-<td>org.acme.trading.BulkTrade</td>
-<td>BulkTrade</td>
-<td>A transaction named BulkTrade</td>
+<td>lastName</td>
+<td>string</td>
+<td></td>
 </tr>
 <tr>
-<td>org.acme.trading.RemoveHighQuantityCommodities</td>
-<td>RemoveHighQuantityCommodities</td>
-<td>A transaction named RemoveHighQuantityCommodities</td>
-</tr>
-<tr>
-<td>org.acme.trading._demoSetup</td>
-<td>_demoSetup</td>
-<td>A transaction named _demoSetup</td>
+<td>office</td>
+<td>string</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="participant-definition">Participant Definition</h2>
-<table>
-<thead>
-<tr>
-<th>Namespace</th>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>org.acme.trading.Trader</td>
-<td>Trader</td>
-<td>An participant named Trader</td>
-</tr>
-<tr>
-<td>org.acme.trading.Regulator</td>
-<td>Regulator</td>
-<td>An participant named Regulator</td>
-</tr>
-</tbody>
-</table>
-<h2 id="acl">ACL</h2>
-<h2 id="queries">Queries</h2>
-<ul>
-<li>Select all commodities</li>
-<li>Select all commodities based on their main exchange</li>
-<li>Select all commodities based on their owner</li>
-<li>Select commodities based on quantity</li>
-</ul>
  
                     </section>
                 </div>

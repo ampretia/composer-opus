@@ -1,30 +1,37 @@
 {
-  "name": "composer-opus",
+  "name": "@ampretia/composer-opus",
   "version": "0.2.0",
   "description": "Generates documentation packages for Hyperlegder Composer Business Networks",
   "bin": {
-    "opus": "bin/cli.js"
+    "opus": "bin/opus"
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./test/usage/go.sh && cp -r ./test/usage/out/* ./docs/"
   },
   "keywords": [],
   "author": "MBW",
   "license": "Apache-2",
   "devDependencies": {
+    "eslint": "^4.16.0",
     "mermaid": "^7.1.0"
   },
   "dependencies": {
     "chalk": "^2.3.0",
-    "composer-admin": "^0.12.2",
-    "composer-client": "^0.12.2",
-    "js2flowchart": "^1.1.0",
+    "composer-admin": "^0.17.4",
+    "composer-client": "^0.17.4",
+    "debug-stream": "^3.0.1",
+    "js-yaml": "^3.10.0",
+    "js2flowchart": "^1.1.3",
+    "lodash.clonedeep": "^4.5.0",
+    "map-stream": "0.0.7",
     "markdown-it": "^8.4.0",
     "markdown-it-anchor": "^4.0.0",
     "mkdirp": "^0.5.1",
     "nunjucks": "^3.0.1",
-    "ora": "^1.3.0",
+    "ora": "^1.4.0",
+    "prettyoutput": "^1.1.1",
+    "rimraf": "^2.6.2",
     "vinyl-fs": "^2.4.4",
     "yargs": "^8.0.2"
   }

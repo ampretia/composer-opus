@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>{{context.core.name}}</title>
+    <title></title>
 
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/x-icon" href="/api-doc/composer/unstable/favicon.ico">
@@ -32,16 +32,19 @@
                         <!-- Navigation -->
                         <nav class="navbar-docs" role="navigation">
                             <!-- Brand and toggle get grouped for better mobile display -->
-                            <a class="navbar-brand" href="/composer/unstable/index.html">
-                                <b>{{context.core.name}}</b></a>{{context.core.version}}
-                            <!-- Collect the nav links, forms, and other content for toggling 
+                            <a class="navbar-brand" href="./index.html">
+                                <b></b></a>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <div class="top-nav-docs">
-                                    <a href="../tutorials/tutorials.html">Tutorials</a>
-                                    <a href="../introduction/introduction.html">Docs</a>
-                                    <a href="../support/support-index.html">Community</a>
+                                    <a href="./index.html">Summary</a>
+                                    <a href="./assets.html">Assets</a>
+                                    <a href="./transactions.html">Transactions</a>
+                                    <a href="./participants.html">Participants</a>                                    
+                                    <a href="./queries.html">Queries</a>    
+                                    <a href="./acls.html">ACLs</a>    
                                 </div>
-                            </div>-->
+                            </div>
                         </nav>
 
                     </div>
@@ -50,37 +53,34 @@
                         <p><a href="#summaries">Summaries</a></p>
                     </div>-->
                     
-                    <nav class="context-nav">
+                   <!-- <nav class="context-nav">
                     <ul>
                         <li><p><a href="#readme"><b>ReadMe</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
                      
                         <li><p><a href="#asset-definition-summaries"><b>Assets</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
                                   <ul>
-                                        {% for asset in context.types.asset %}
-                                            <li><p><a href="#{{asset.name | lower }}">{{asset.name}}</a></p></li>
-                                        {% endfor %}
+                                        
                                     </ul>
                                 </ul>
                                 <li><p><a href="#transaction-definition-summaries"><b>Transactions</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
                                 <ul>
                                    
-                                        {% for tx in context.types.transaction %}
-                                            <li><p><a href="#{{tx.name | lower }}">{{tx.name}}</a></p></li>
-                                        {% endfor %}
+                                        
                                     </ul>
                                 
                         <li><p><a href="#detail"><b>Details</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
                     </ul>
 
                     </nav>
-
+    -->
                 </div>
 
 
 
                 <div class="page-content-grid">
                     <section class="content-chunk" id="readme">
-                    {{body}} 
+                    <h1 id="transaction-functions-detail">Transaction Functions Detail</h1>
+ 
                     </section>
                 </div>
                 <!-- Otherwise, have the main content fill all 12 columns... -->

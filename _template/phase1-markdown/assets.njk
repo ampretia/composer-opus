@@ -1,0 +1,20 @@
+# Asset Model
+
+{% for asset in types.asset %}
+#### {{asset.name}}
+**{{asset.fqn}}** - **{{asset.description}}**
+
+| Name | Type | Description |
+| --------  | ---- | ----------- |
+{% for id,info in asset.properties %}|{{id}}|{{info.type}}|{{info.description}}|
+{% endfor %}
+{% endfor %}
+
+### ACLs
+{% for rule in acls %}- *{{rule.description}}
+{% endfor %}
+
+### Queries
+
+still to do
+

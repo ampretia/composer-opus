@@ -2,6 +2,7 @@ var openRotation = 0;
 var closeRotation = 270;
 
 $(function(){
+    console.log( window.location.href);
     $('a').each(function(){
         if ($(this).prop('href') == window.location.href) {
             $(this).addClass('active');

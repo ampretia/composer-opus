@@ -1,40 +1,41 @@
+{{core.readme}}
 
-# Business Network Definition Outline
+# Summaries
 
-*Name*: {{core.name}} 
-*Version*: {{core.version}}
-
-## Asset Definition Summaries
+## Asset Definition 
 | Namespace | Name | Description |
 | --------  | ---- | ----------- |
 {% for asset in types.asset %}| {{asset.fqn}} | {{asset.name}} | {{asset.description}}  |
 {% endfor %}
 
-## Transaction Definition Summaries
+## Transaction Definition 
 | Namespace | Name | Description |
 | --------  | ---- | ----------- |
 {% for tx in types.transaction %}| {{tx.fqn}} | {{tx.name}} | {{tx.description}}  |
 {% endfor %}
 
-## Participant Definition Summaries
+## Participant Definition 
 | Namespace | Name | Description |
 | --------  | ---- | ----------- |
 {% for pt in types.participant %}| {{pt.fqn}} | {{pt.name}} | {{pt.description}}  |
 {% endfor %}
 
-## ACL Summary
+## ACL 
 {% for rule in acls %}- *{{rule.description}}
 {% endfor %}
 
-## Details
+# Detail
 
 ### Transaction Functions
 
 {% for fn in scripts.files %}
+
 *Identifier* {{fn.identifier}}
 *Functions*
 {% for f in fn.functions %}
-```
+#### {{f.name}}
+
+```javascript
 {{f.text}}
 ``` 
 
@@ -45,7 +46,15 @@
 
 ### Asset Model
 
-_wip_
+{% for asset in types.asset %}
+#### {{asset.name}}
+**{{asset.fqn}}** - **{{asset.description}}**
+
+| Name | Type | Description |
+| --------  | ---- | ----------- |
+{% for id,info in asset.properties %}|{{id}}|{{info.type}}|{{info.description}}|
+{% endfor %}
+{% endfor %}
 
 ### ACLs
 {% for rule in acls %}- *{{rule.description}}
@@ -53,7 +62,5 @@ _wip_
 
 ### Queries
 
-_wip_
+still to do
 
-# Network Readme
-{{core.readme}}

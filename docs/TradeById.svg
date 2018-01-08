@@ -1,0 +1,272 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                width="688" height="572">
+                
+            <g>
+                <rect x="50" y="80"
+            width="276.2" height="30"
+            style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                    
+                <line x1="60" y1="80" x2="60" y2="110"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                <line x1="316.2" y1="80" x2="316.2" y2="110"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+             
+                <title>function TradeById(tradeById)</title>
+            <text x="75" y="100"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="75" y="100">function TradeById(tradeById)</tspan>
+            </text>
+                
+            </g>
+            <g>
+                <rect x="87" y="128.5"
+            width="443.4" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                
+                <line x1="530.4" y1="138.5" x2="535.4" y2="138.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                
+                <line x1="530.4" y1="148.5" x2="535.4" y2="148.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+
+                <path d="M535.4, 132.5 L551.4, 143.5 L535.4, 154.5 Z" 
+        fill="#a5d6a7" stroke="#444" stroke-width="1" />
+                             
+                <title>return getAssetRegistry(&apos;org.acme.trading.Commodity&apos;).then(function (registry) {
+  commodityRegistry = registry;
+  return commodityRegistry.get(tradeById.tradingSymbol);
+}).then(function (result) {
+  result.quantity -= tradeById.qty;
+  return commodityRegistry.update(result);
+})</title>
+            <text x="102" y="148.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="102" y="148.5">return getAssetRegistry(&apos;org.acme.trading.Commodit...</tspan>
+            </text>
+                
+            </g>
+                <g>
+                   <rect x="124" y="177"
+            width="388.8" height="30"
+            rx="2" ry="2"
+            style="fill:#C5E1A5; stroke:#444; stroke-width:1" />
+                   <title>getAssetRegistry(&apos;org.acme.trading.Commodity&apos;)</title>
+            <text x="139" y="197"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="139" y="197">getAssetRegistry(&apos;org.acme.trading.Commodity&apos;)</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="124" y="225.5"
+            width="108" height="30"
+            rx="2" ry="2"
+            style="fill:#C5E1A5; stroke:#444; stroke-width:1" />
+                   <title>.then(*())</title>
+            <text x="139" y="245.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="139" y="245.5">.then(*())</tspan>
+            </text>
+                   <circle cx="130" cy="249.5" r="4"
+        style="fill:#ede7f6; stroke:#444; stroke-width:1" />
+                   
+                </g>
+            <g>
+                <rect x="161" y="274"
+            width="190.4" height="30"
+            style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                    
+                <line x1="171" y1="274" x2="171" y2="304"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                <line x1="341.4" y1="274" x2="341.4" y2="304"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+             
+                <title>function(registry)</title>
+            <text x="186" y="294"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="186" y="294">function(registry)</tspan>
+            </text>
+                
+            </g>
+                <g>
+                   <rect x="198" y="322.5"
+            width="248.4" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>commodityRegistry = registry</title>
+            <text x="213" y="342.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="342.5">commodityRegistry = registry</tspan>
+            </text>
+                   
+                   
+                </g>
+            <g>
+                <rect x="198" y="371"
+            width="443.4" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                
+                <line x1="641.4" y1="381" x2="646.4" y2="381"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                
+                <line x1="641.4" y1="391" x2="646.4" y2="391"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+
+                <path d="M646.4, 375 L662.4, 386 L646.4, 397 Z" 
+        fill="#a5d6a7" stroke="#444" stroke-width="1" />
+                             
+                <title>return commodityRegistry.get(tradeById.tradingSymbol)</title>
+            <text x="213" y="391"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="391">return commodityRegistry.get(tradeById.tradingSymb...</tspan>
+            </text>
+                
+            </g>
+            <g>
+                <rect x="124" y="419.5"
+            width="174.8" height="30"
+            style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                    
+                <line x1="134" y1="419.5" x2="134" y2="449.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                <line x1="288.8" y1="419.5" x2="288.8" y2="449.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+             
+                <title>function(result)</title>
+            <text x="149" y="439.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="149" y="439.5">function(result)</tspan>
+            </text>
+                
+            </g>
+                <g>
+                   <rect x="161" y="468"
+            width="279.6" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>result.quantity -= tradeById.qty</title>
+            <text x="176" y="488"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="176" y="488">result.quantity -= tradeById.qty</tspan>
+            </text>
+                   
+                   
+                </g>
+            <g>
+                <rect x="161" y="516.5"
+            width="334.2" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                
+                <line x1="495.2" y1="526.5" x2="500.2" y2="526.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                
+                <line x1="495.2" y1="536.5" x2="500.2" y2="536.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+
+                <path d="M500.2, 520.5 L516.2, 531.5 L500.2, 542.5 Z" 
+        fill="#a5d6a7" stroke="#444" stroke-width="1" />
+                             
+                <title>return commodityRegistry.update(result)</title>
+            <text x="176" y="536.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="176" y="536.5">return commodityRegistry.update(result)</tspan>
+            </text>
+                
+            </g>
+            <g>
+               <rect x="25" y="13.75"
+            width="216.6" height="24"
+            style="fill:#fff59d; stroke:#444; stroke-width:1" />
+               <circle cx="25" cy="25" r="15"
+        style="fill:#fff59d; stroke:#444; stroke-width:1" />
+               <title>Program: source module</title>
+            <text x="55" y="30"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="55" y="30">Program: source module</tspan>
+            </text>
+            </g>
+            <g>
+               <path d="M25, 40 L25 91 Q25 95
+                29 95
+                L42 95 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M42, 92 L50, 95 L42, 98 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 139.5 Q68.5 143.5
+                72.5 143.5
+                L79 143.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M79, 140.5 L87, 143.5 L79, 146.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M105.5, 158.5 L105.5 188 Q105.5 192
+                109.5 192
+                L116 192 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M116, 189 L124, 192 L116, 195 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M105.5, 158.5 L105.5 236.5 Q105.5 240.5
+                109.5 240.5
+                L116 240.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M116, 237.5 L124, 240.5 L116, 243.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M142.5, 255.5 L142.5 285 Q142.5 289
+                146.5 289
+                L161 289 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               false
+            </g>
+            <g>
+               <path d="M179.5, 304 L179.5 333.5 Q179.5 337.5
+                183.5 337.5
+                L190 337.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M190, 334.5 L198, 337.5 L190, 340.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M179.5, 304 L179.5 382 Q179.5 386
+                183.5 386
+                L190 386 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M190, 383 L198, 386 L190, 389 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M105.5, 158.5 L105.5 430.5 Q105.5 434.5
+                109.5 434.5
+                L116 434.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M116, 431.5 L124, 434.5 L116, 437.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M142.5, 449.5 L142.5 479 Q142.5 483
+                146.5 483
+                L153 483 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M153, 480 L161, 483 L153, 486 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M142.5, 449.5 L142.5 527.5 Q142.5 531.5
+                146.5 531.5
+                L153 531.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M153, 528.5 L161, 531.5 L153, 534.5 Z" 
+        fill="#333" />
+            </g>
+            </svg>

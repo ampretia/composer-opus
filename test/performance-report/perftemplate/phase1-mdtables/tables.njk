@@ -1,0 +1,26 @@
+
+# {{ data.test }}
+
+
+{% for org in data.orgResults %}
+## Results for {{org.orgs}} Organiations
+
+{% for peer in org.peerResults %}
+
+### Results for {{peer.peers}} Peers
+
+**Headline Figures are**
+- TPS = {{peer.headline.tps}}
+- Latency = {{peer.headline.latency}}
+
+| Memory | CPU | NetworkIn | NetworkOut | Disc Read | DiscWrite |
+| ------ | --- | --------- | -------- | ------ | ------ |
+|{{peer.chaincode.memory}}|{{peer.chaincode.CPU}}|{{peer.chaincode.NetworkIn}}|{{peer.chaincode.NetworkOut}}|{{peer.chaincode.DiscRead}}|{{peer.chaincode.DiscWrite}}|
+|{{peer.peer.memory}}|{{peer.peer.CPU}}|{{peer.peer.peer}}|{{peer.peer.NetworkOut}}|{{peer.peer.DiscRead}}|{{peer.peer.DiscWrite}}|
+|{{peer.couchDB.memory}}|{{peer.couchDB.CPU}}|{{peer.couchDB.NetworkIn}}|{{peer.couchDB.NetworkOut}}|{{peer.couchDB.DiscRead}}|{{peer.couchDB.DiscWrite}}|
+
+
+{% endfor %}
+
+{% endfor %}
+

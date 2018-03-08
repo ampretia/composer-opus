@@ -1,0 +1,201 @@
+{
+    "test": "marbles",
+    "orgResults": [
+        {
+            "orgs": 2,
+            "peerResults": [
+                {
+                    "peers": 1,
+                    "headline": {
+                        "tps": 18,
+                        "latency": 0.8
+                    },
+                    "chaincode": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "peer": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "couchDB": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    }
+                },
+                {
+                    "peers": 2,
+                    "headline": {
+                        "tps": 14,
+                        "latency": 1.1
+                    },
+                    "chaincode": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "peer": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "couchDB": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    }
+                },
+                {
+                    "peers": 3,
+                    "headline": {
+                        "tps": 10,
+                        "latency": 1.8
+                    },
+                    "chaincode": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "peer": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "couchDB": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    }
+                }
+            ]
+        },
+        {
+            "orgs": 3,
+            "peerResults": [
+                {
+                    "peers": 1,
+                    "headline": {
+                        "tps": 11,
+                        "latency": 1.5
+                    },
+                    "chaincode": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "peer": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "couchDB": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    }
+                },
+                {
+                    "peers": 2,
+                    "headline": {
+                        "tps": 8,
+                        "latency": 2.1
+                    },
+                    "chaincode": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "peer": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "couchDB": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    }
+                },
+                {
+                    "peers": 3,
+                    "headline": {
+                        "tps": 4,
+                        "latency": 3.2
+                    },
+                    "chaincode": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "peer": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    },
+                    "couchDB": {
+                        "memory": "91MB",
+                        "CPU": "16.2%",
+                        "NetworkIn": "766KB",
+                        "NetworkOut": "885KB",
+                        "DiscRead": "0B",
+                        "DiscWrite": "1.2MB"
+                    }
+                }
+            ]
+        }
+    ]
+}

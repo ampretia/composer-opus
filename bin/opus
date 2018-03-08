@@ -9,7 +9,7 @@ const yargs = require('yargs');
 let results = yargs
     .option('a', {
         alias: 'archive',
-        demandOption: true,
+        demandOption: false,
         describe: 'Archive file to document',
         type: 'string'
     })

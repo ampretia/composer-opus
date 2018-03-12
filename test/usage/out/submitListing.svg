@@ -1,0 +1,565 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                width="649" height="1202">
+                
+            <g>
+                <rect x="50" y="80"
+            width="307.4" height="30"
+            style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                    
+                <line x1="60" y1="80" x2="60" y2="110"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                <line x1="347.4" y1="80" x2="347.4" y2="110"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+             
+                <title>function submitListing(listingtx)</title>
+            <text x="75" y="100"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="75" y="100">function submitListing(listingtx)</tspan>
+            </text>
+                
+            </g>
+                <g>
+                   <rect x="87" y="128.5"
+            width="349.8" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>var exchangeToListOn = listingtx.exchange</title>
+            <text x="102" y="148.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="102" y="148.5">var exchangeToListOn = listingtx.exchange</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="87" y="177"
+            width="310.8" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>var trader = getCurrentParticipant()</title>
+            <text x="102" y="197"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="102" y="197">var trader = getCurrentParticipant()</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="87" y="225.5"
+            width="279.6" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>var newListing = [object Object]</title>
+            <text x="102" y="245.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="102" y="245.5">var newListing = [object Object]</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="87" y="274"
+            width="357.59999999999997" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>newListing.commodity = listingtx.commodity</title>
+            <text x="102" y="294"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="102" y="294">newListing.commodity = listingtx.commodity</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="87" y="322.5"
+            width="342" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>newListing.quantity = listingtx.quantity</title>
+            <text x="102" y="342.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="102" y="342.5">newListing.quantity = listingtx.quantity</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="87" y="371"
+            width="373.2" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>newListing.offerPrice = listingtx.offerPrice</title>
+            <text x="102" y="391"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="102" y="391">newListing.offerPrice = listingtx.offerPrice</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="87" y="419.5"
+            width="357.59999999999997" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>newListing.offeringHouse = trader.employer</title>
+            <text x="102" y="439.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="102" y="439.5">newListing.offeringHouse = trader.employer</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="87" y="468"
+            width="443.4" height="30"
+            rx="2" ry="2"
+            style="fill:#C5E1A5; stroke:#444; stroke-width:1" />
+                   <title>exchangeToListOn.listedCommodities.push(newListing)</title>
+            <text x="102" y="488"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="102" y="488">exchangeToListOn.listedCommodities.push(newListing...</tspan>
+            </text>
+                   
+                   
+                </g>
+            <g>
+                <rect x="87" y="516.5"
+            width="443.4" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                
+                <line x1="530.4" y1="526.5" x2="535.4" y2="526.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                
+                <line x1="530.4" y1="536.5" x2="535.4" y2="536.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+
+                <path d="M535.4, 520.5 L551.4, 531.5 L535.4, 542.5 Z" 
+        fill="#a5d6a7" stroke="#444" stroke-width="1" />
+                             
+                <title>return getAssetRegistry(&apos;ampretia.mtn.CommodityListing&apos;).then(function (result) {
+  listingRegsitry = result;
+  return getAssetRegistry(&apos;ampretia.mtn.Exchange&apos;);
+}).then(function (result) {
+  exchangeRegistry = result;
+}).then(function () {
+  return listingRegsitry.add(newListing);
+}).then(function () {
+  return exchangeRegistry.update(exchangeToListOn);
+})</title>
+            <text x="102" y="536.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="102" y="536.5">return getAssetRegistry(&apos;ampretia.mtn.CommodityLis...</tspan>
+            </text>
+                
+            </g>
+                <g>
+                   <rect x="124" y="565"
+            width="412.2" height="30"
+            rx="2" ry="2"
+            style="fill:#C5E1A5; stroke:#444; stroke-width:1" />
+                   <title>getAssetRegistry(&apos;ampretia.mtn.CommodityListing&apos;)</title>
+            <text x="139" y="585"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="139" y="585">getAssetRegistry(&apos;ampretia.mtn.CommodityListing&apos;)</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="124" y="613.5"
+            width="108" height="30"
+            rx="2" ry="2"
+            style="fill:#C5E1A5; stroke:#444; stroke-width:1" />
+                   <title>.then(*())</title>
+            <text x="139" y="633.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="139" y="633.5">.then(*())</tspan>
+            </text>
+                   <circle cx="130" cy="637.5" r="4"
+        style="fill:#ede7f6; stroke:#444; stroke-width:1" />
+                   
+                </g>
+            <g>
+                <rect x="161" y="662"
+            width="174.8" height="30"
+            style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                    
+                <line x1="171" y1="662" x2="171" y2="692"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                <line x1="325.8" y1="662" x2="325.8" y2="692"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+             
+                <title>function(result)</title>
+            <text x="186" y="682"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="186" y="682">function(result)</tspan>
+            </text>
+                
+            </g>
+                <g>
+                   <rect x="198" y="710.5"
+            width="217.2" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>listingRegsitry = result</title>
+            <text x="213" y="730.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="730.5">listingRegsitry = result</tspan>
+            </text>
+                   
+                   
+                </g>
+            <g>
+                <rect x="198" y="759"
+            width="404.4" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                
+                <line x1="602.4" y1="769" x2="607.4" y2="769"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                
+                <line x1="602.4" y1="779" x2="607.4" y2="779"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+
+                <path d="M607.4, 763 L623.4, 774 L607.4, 785 Z" 
+        fill="#a5d6a7" stroke="#444" stroke-width="1" />
+                             
+                <title>return getAssetRegistry(&apos;ampretia.mtn.Exchange&apos;)</title>
+            <text x="213" y="779"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="779">return getAssetRegistry(&apos;ampretia.mtn.Exchange&apos;)</tspan>
+            </text>
+                
+            </g>
+                <g>
+                   <rect x="124" y="807.5"
+            width="108" height="30"
+            rx="2" ry="2"
+            style="fill:#C5E1A5; stroke:#444; stroke-width:1" />
+                   <title>.then(*())</title>
+            <text x="139" y="827.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="139" y="827.5">.then(*())</tspan>
+            </text>
+                   <circle cx="130" cy="831.5" r="4"
+        style="fill:#ede7f6; stroke:#444; stroke-width:1" />
+                   
+                </g>
+            <g>
+                <rect x="161" y="856"
+            width="174.8" height="30"
+            style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                    
+                <line x1="171" y1="856" x2="171" y2="886"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                <line x1="325.8" y1="856" x2="325.8" y2="886"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+             
+                <title>function(result)</title>
+            <text x="186" y="876"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="186" y="876">function(result)</tspan>
+            </text>
+                
+            </g>
+                <g>
+                   <rect x="198" y="904.5"
+            width="225" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                   <title>exchangeRegistry = result</title>
+            <text x="213" y="924.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="924.5">exchangeRegistry = result</tspan>
+            </text>
+                   
+                   
+                </g>
+                <g>
+                   <rect x="124" y="953"
+            width="108" height="30"
+            rx="2" ry="2"
+            style="fill:#C5E1A5; stroke:#444; stroke-width:1" />
+                   <title>.then(*())</title>
+            <text x="139" y="973"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="139" y="973">.then(*())</tspan>
+            </text>
+                   <circle cx="130" cy="977" r="4"
+        style="fill:#ede7f6; stroke:#444; stroke-width:1" />
+                   
+                </g>
+            <g>
+                <rect x="161" y="1001.5"
+            width="128" height="30"
+            style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                    
+                <line x1="171" y1="1001.5" x2="171" y2="1031.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                <line x1="279" y1="1001.5" x2="279" y2="1031.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+             
+                <title>function()</title>
+            <text x="186" y="1021.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="186" y="1021.5">function()</tspan>
+            </text>
+                
+            </g>
+            <g>
+                <rect x="198" y="1050"
+            width="326.4" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                
+                <line x1="524.4" y1="1060" x2="529.4" y2="1060"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                
+                <line x1="524.4" y1="1070" x2="529.4" y2="1070"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+
+                <path d="M529.4, 1054 L545.4, 1065 L529.4, 1076 Z" 
+        fill="#a5d6a7" stroke="#444" stroke-width="1" />
+                             
+                <title>return listingRegsitry.add(newListing)</title>
+            <text x="213" y="1070"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="213" y="1070">return listingRegsitry.add(newListing)</tspan>
+            </text>
+                
+            </g>
+            <g>
+                <rect x="124" y="1098.5"
+            width="128" height="30"
+            style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                    
+                <line x1="134" y1="1098.5" x2="134" y2="1128.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                <line x1="242" y1="1098.5" x2="242" y2="1128.5"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+             
+                <title>function()</title>
+            <text x="149" y="1118.5"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="149" y="1118.5">function()</tspan>
+            </text>
+                
+            </g>
+            <g>
+                <rect x="161" y="1147"
+            width="404.4" height="30"
+            rx="3" ry="3"
+            style="fill:#90caf9; stroke:#444; stroke-width:1" />
+                
+                <line x1="565.4" y1="1157" x2="570.4" y2="1157"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+                
+                <line x1="565.4" y1="1167" x2="570.4" y2="1167"
+                style="fill:#a5d6a7; stroke:#444; stroke-width:1" />
+
+                <path d="M570.4, 1151 L586.4, 1162 L570.4, 1173 Z" 
+        fill="#a5d6a7" stroke="#444" stroke-width="1" />
+                             
+                <title>return exchangeRegistry.update(exchangeToListOn)</title>
+            <text x="176" y="1167"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="176" y="1167">return exchangeRegistry.update(exchangeToListOn)</tspan>
+            </text>
+                
+            </g>
+            <g>
+               <rect x="25" y="13.75"
+            width="216.6" height="24"
+            style="fill:#fff59d; stroke:#444; stroke-width:1" />
+               <circle cx="25" cy="25" r="15"
+        style="fill:#fff59d; stroke:#444; stroke-width:1" />
+               <title>Program: source module</title>
+            <text x="55" y="30"
+                font-family="monospace" font-size="13" fill="#222">
+                <tspan x="55" y="30">Program: source module</tspan>
+            </text>
+            </g>
+            <g>
+               <path d="M25, 40 L25 91 Q25 95
+                29 95
+                L42 95 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M42, 92 L50, 95 L42, 98 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 139.5 Q68.5 143.5
+                72.5 143.5
+                L79 143.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M79, 140.5 L87, 143.5 L79, 146.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 188 Q68.5 192
+                72.5 192
+                L79 192 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M79, 189 L87, 192 L79, 195 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 236.5 Q68.5 240.5
+                72.5 240.5
+                L79 240.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M79, 237.5 L87, 240.5 L79, 243.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 285 Q68.5 289
+                72.5 289
+                L79 289 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M79, 286 L87, 289 L79, 292 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 333.5 Q68.5 337.5
+                72.5 337.5
+                L79 337.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M79, 334.5 L87, 337.5 L79, 340.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 382 Q68.5 386
+                72.5 386
+                L79 386 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M79, 383 L87, 386 L79, 389 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 430.5 Q68.5 434.5
+                72.5 434.5
+                L79 434.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M79, 431.5 L87, 434.5 L79, 437.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 479 Q68.5 483
+                72.5 483
+                L79 483 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M79, 480 L87, 483 L79, 486 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M68.5, 110 L68.5 527.5 Q68.5 531.5
+                72.5 531.5
+                L79 531.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M79, 528.5 L87, 531.5 L79, 534.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M105.5, 546.5 L105.5 576 Q105.5 580
+                109.5 580
+                L116 580 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M116, 577 L124, 580 L116, 583 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M105.5, 546.5 L105.5 624.5 Q105.5 628.5
+                109.5 628.5
+                L116 628.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M116, 625.5 L124, 628.5 L116, 631.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M142.5, 643.5 L142.5 673 Q142.5 677
+                146.5 677
+                L161 677 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               false
+            </g>
+            <g>
+               <path d="M179.5, 692 L179.5 721.5 Q179.5 725.5
+                183.5 725.5
+                L190 725.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M190, 722.5 L198, 725.5 L190, 728.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M179.5, 692 L179.5 770 Q179.5 774
+                183.5 774
+                L190 774 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M190, 771 L198, 774 L190, 777 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M105.5, 546.5 L105.5 818.5 Q105.5 822.5
+                109.5 822.5
+                L116 822.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M116, 819.5 L124, 822.5 L116, 825.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M142.5, 837.5 L142.5 867 Q142.5 871
+                146.5 871
+                L161 871 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               false
+            </g>
+            <g>
+               <path d="M179.5, 886 L179.5 915.5 Q179.5 919.5
+                183.5 919.5
+                L190 919.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M190, 916.5 L198, 919.5 L190, 922.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M105.5, 546.5 L105.5 964 Q105.5 968
+                109.5 968
+                L116 968 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M116, 965 L124, 968 L116, 971 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M142.5, 983 L142.5 1012.5 Q142.5 1016.5
+                146.5 1016.5
+                L161 1016.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               false
+            </g>
+            <g>
+               <path d="M179.5, 1031.5 L179.5 1061 Q179.5 1065
+                183.5 1065
+                L190 1065 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M190, 1062 L198, 1065 L190, 1068 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M105.5, 546.5 L105.5 1109.5 Q105.5 1113.5
+                109.5 1113.5
+                L116 1113.5 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M116, 1110.5 L124, 1113.5 L116, 1116.5 Z" 
+        fill="#333" />
+            </g>
+            <g>
+               <path d="M142.5, 1128.5 L142.5 1158 Q142.5 1162
+                146.5 1162
+                L153 1162 "
+        style="fill:none; stroke:#444; stroke-width:1" />
+               <path d="M153, 1159 L161, 1162 L153, 1165 Z" 
+        fill="#333" />
+            </g>
+            </svg>

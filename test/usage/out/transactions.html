@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title></title>
+    <title>metal-trade-network</title>
 
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/x-icon" href="/api-doc/composer/unstable/favicon.ico">
@@ -31,9 +31,13 @@
                     <div class="docs-pagenav-grid">
                         <!-- Navigation -->
                         <nav class="navbar-docs" role="navigation">
+                            <div class="search-form">
+                            <img width="200px" src="https://hyperledger.github.io/composer-sample-networks/packages/bond-network/networkimage.svg"></img>
+                            </div>
+
                             <!-- Brand and toggle get grouped for better mobile display -->
                             <a class="navbar-brand" href="./index.html">
-                                <b></b></a>
+                                <b>metal-trade-network</b></a>0.0.1
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <div class="top-nav-docs">
@@ -46,33 +50,30 @@
                                 </div>
                             </div>
                         </nav>
-
+                            <div class="docs-current-page-grid">
+                                <p>Transactions</p>
+                            </div>
                     </div>
-
-                  <!--  <div class="docs-current-page-grid">
-                        <p><a href="#summaries">Summaries</a></p>
-                    </div>-->
                     
-                   <!-- <nav class="context-nav">
+                  <nav class="context-nav">
                     <ul>
-                        <li><p><a href="#readme"><b>ReadMe</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
-                     
-                        <li><p><a href="#asset-definition-summaries"><b>Assets</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
-                                  <ul>
-                                        
-                                    </ul>
-                                </ul>
-                                <li><p><a href="#transaction-definition-summaries"><b>Transactions</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
+                       
+                            
+                                <li><p><a href="#lib/logic.js"><b>lib/logic.js</b></a></p>
                                 <ul>
-                                   
-                                        
-                                    </ul>
+                                 
+                                    <li><p><a href="#submitlisting"><b>submitListing</b></a></p></li>             
                                 
-                        <li><p><a href="#detail"><b>Details</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
+                                    <li><p><a href="#tradecommodity"><b>tradeCommodity</b></a></p></li>             
+                                
+                                </ul></li>
+                            
+                    
+
                     </ul>
 
                     </nav>
-    -->
+  
                 </div>
 
 
@@ -82,117 +83,133 @@
                     <h1 id="transaction-functions-detail">Transaction Functions Detail</h1>
 <p><em>Identifier</em> lib/logic.js
 <em>Functions</em></p>
+<h4 id="submitlisting">submitListing</h4>
+<pre><code class="language-javascript">function submitListing(listingtx){
+
+    var exchangeToListOn = listingtx.exchange;
+    var trader = getCurrentParticipant();
+
+    var newListing = getFactory().newResource('ampretia.mtn','CommodityListing',listingtx.newid);
+
+    newListing.commodity = listingtx.commodity;
+    newListing.quantity = listingtx.quantity;
+    newListing.offerPrice = listingtx.offerPrice;
+    newListing.offeringHouse = trader.employer;
+
+    exchangeToListOn.listedCommodities.push(newListing);
+
+    var exchangeRegistry;
+    var listingRegsitry;
+
+    return getAssetRegistry('ampretia.mtn.CommodityListing')
+      .then(function (result){
+          listingRegsitry = result;
+          return getAssetRegistry('ampretia.mtn.Exchange');
+      })
+      .then(function(result){
+          exchangeRegistry = result;
+      })
+      .then(function(){
+          return listingRegsitry.add(newListing);
+      })
+      .then(function(){
+          return exchangeRegistry.update(exchangeToListOn);
+      });
+
+}
+</code></pre>
+<p><img src="submitListing.svg" alt="submitListing"></p>
 <h4 id="tradecommodity">tradeCommodity</h4>
 <pre><code class="language-javascript">function tradeCommodity(trade) {
 
-    // set the new owner of the commodity
-    trade.commodity.owner = trade.newOwner;
-    return getAssetRegistry('org.acme.trading.Commodity')
-        .then(function (assetRegistry) {
+    // get details of the trade
+    var symbol = trade.line.tradingSymbol;
+    var cost = trade.line.quantity;
 
-            // emit a notification that a trade has occurred
-            var tradeNotification = getFactory().newEvent('org.acme.trading', 'TradeNotification');
-            tradeNotification.commodity = trade.commodity;
-            emit(tradeNotification);
+    var exchange = trade.exchange;
+    // get details of the trader
+    var trader = trade.trader;
 
-            // persist the state of the commodity
-            return assetRegistry.update(trade.commodity);
+    var newHolding;
+    var listing;
+    var exchange = trade.exchange;
+    var brokage = trade.trader.employer;
+
+    var regisitries = {};
+
+    return getAssetRegistry('ampretia.mtn.CommodityHolding')
+    .then(function (result){
+        regisitries['ampretia.mtn.CommodityHolding']=result;
+        return getAssetRegistry('ampretia.mtn.CommodityListing');
+    })
+    .then(function (result){
+        regisitries['ampretia.mtn.CommodityListing']=result;
+        return getAssetRegistry('ampretia.mtn.Exchange');
+    })
+    .then(function (result){
+        regisitries['ampretia.mtn.Exchange']=result;
+        return getAssetRegistry('ampretia.mtn.Brokage');
+    })
+    .then(function (result){
+        regisitries['ampretia.mtn.Brokage']=result;
+        return getParticipantRegistry('ampretia.mtn.Trader');
+    })
+    .then(function (result){
+        regisitries['ampretia.mtn.Trader']=result;
+        // need to see if the exchange has the commodity listed,
+        var possibleListings = exchange.listedCommodities.filter(function(e) {
+            // look for listings that match the requested symbol
+            return (e.commodity.tradingSymbol === symbol) &amp;&amp;
+               (e.quantity &gt;= trade.line.quantity);
         });
+
+        if (!possibleListings){
+            throw new Error('Commodity is not currently listed for trade');
+        }
+
+            // find a suitable listing... asserting that the purchase has to come from
+        // only one listing  and is the price acceptable
+        // TODO
+
+        listing = possibleListings[0];
+        newHolding = getFactory().newResource('ampretia.mtn','CommodityHolding',trade.mytradeid);
+
+        newHolding.commodity = listing.commodity;
+        newHolding.quantity = trade.line.quantity;
+        newHolding.purchasePrice = listing.offerPrice;
+        newHolding.tradedBy = trader;
+
+        listing.quantity -= trade.line.quantity;
+
+        if ((listing.offerPrice * trade.line.quantity) &gt; trader.fundLimit){
+            // TODO emit event
+            throw new Error('You can not afford that');
+        }
+        trader.fundLimit -= (listing.offerPrice * trade.line.quantity);
+        // TODO if zero need to remove listing.
+
+        brokage.portfolio.push(newHolding);
+    }).then(function(){
+        // put the assets back
+        return regisitries['ampretia.mtn.CommodityHolding'].add(newHolding);
+    })
+    .then(function(){
+        // put the assets back
+        return regisitries['ampretia.mtn.CommodityListing'].update(listing);
+    }).then(function(){
+        return regisitries['ampretia.mtn.Brokage'].update(brokage);
+    }).then(function(){
+        return regisitries['ampretia.mtn.Exchange'].update(exchange);
+    }).then(function(){
+        return regisitries['ampretia.mtn.Trader'].update(trader);
+    }).then(function(){
+       // var url = &quot;https://hooks.slack.com/services/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&quot;;
+       // return post(url, listing);
+    });
+
 }
 </code></pre>
 <p><img src="tradeCommodity.svg" alt="tradeCommodity"></p>
-<h4 id="tradebyid">TradeById</h4>
-<pre><code class="language-javascript">function TradeById(tradeById){
-    var commodityRegistry;
-    return getAssetRegistry('org.acme.trading.Commodity')
-    .then(function(registry){
-        commodityRegistry=registry;
-        return commodityRegistry.get(tradeById.tradingSymbol);
-    })
-    .then(function(result){
-        result.quantity-=tradeById.qty;
-        return commodityRegistry.update(result);
-    });
-
-}
-</code></pre>
-<p><img src="TradeById.svg" alt="TradeById"></p>
-<h4 id="removehighquantitycommodities">removeHighQuantityCommodities</h4>
-<pre><code class="language-javascript">function removeHighQuantityCommodities(remove) {
-
-    return getAssetRegistry('org.acme.trading.Commodity')
-        .then(function (assetRegistry) {
-            return query('selectCommoditiesWithHighQuantity')
-                    .then(function (results) {
-
-                        var promises = [];
-
-                        for (var n = 0; n &lt; results.length; n++) {
-                            var trade = results[n];
-
-                            // emit a notification that a trade was removed
-                            var removeNotification = getFactory().newEvent('org.acme.trading', 'RemoveNotification');
-                            removeNotification.commodity = trade;
-                            emit(removeNotification);
-
-                            // remove the commodity
-                            promises.push(assetRegistry.remove(trade));
-                        }
-
-                        // we have to return all the promises
-                        return Promise.all(promises);
-                    });
-        });
-}
-</code></pre>
-<p><img src="removeHighQuantityCommodities.svg" alt="removeHighQuantityCommodities"></p>
-<h4 id="setup">setup</h4>
-<pre><code class="language-javascript">function setup(){
-    var factory = getFactory();
- 	var NS = 'org.acme.trading';
-    var traders = [
-      factory.newResource(NS,'Trader','CAROLINE'),
-      factory.newResource(NS,'Trader','TRACY'),
-      factory.newResource(NS,'Trader','TOM'),
-      factory.newResource(NS,'Trader','WHOLESALER')
-    ];
-    
-                          
-    var commodities = [
-      factory.newResource(NS,'Commodity','Ag'),
-      factory.newResource(NS,'Commodity','Pb'),
-      factory.newResource(NS,'Commodity','Fe'),
-      factory.newResource(NS,'Commodity','Cu')
-      ];
- 
-    /* add the resource and the traders */
-    return getParticipantRegistry(NS+'.Trader')
-  .then(function(traderRegistry){
-            traders.forEach(function(trader) {
-         
-          trader.firstName = trader.getIdentifier().toLowerCase();
-          trader.lastName = 'Trader';
-      });
-      return traderRegistry.addAll(traders);
-    })
-  .then(function(){
-    	return getAssetRegistry(NS+'.Commodity');
-    })
-  .then(function(assetRegistry){
-      var qty=5;
-      commodities.forEach(function(commodity) {
-        commodity.description='A lot of '+commodity.getIdentifier();
-        commodity.mainExchange='Hursley';
-        commodity.quantity = (qty);
-        commodity.owner = factory.newRelationship(NS,'Trader','WHOLESALER');
-        qty+=10;
-      })
-      return assetRegistry.addAll(commodities);
-    });
-  
-}
-</code></pre>
-<p><img src="setup.svg" alt="setup"></p>
  
                     </section>
                 </div>

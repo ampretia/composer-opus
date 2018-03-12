@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title></title>
+    <title>metal-trade-network</title>
 
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/x-icon" href="/api-doc/composer/unstable/favicon.ico">
@@ -31,9 +31,13 @@
                     <div class="docs-pagenav-grid">
                         <!-- Navigation -->
                         <nav class="navbar-docs" role="navigation">
+                            <div class="search-form">
+                            <img width="200px" src="https://hyperledger.github.io/composer-sample-networks/packages/bond-network/networkimage.svg"></img>
+                            </div>
+
                             <!-- Brand and toggle get grouped for better mobile display -->
                             <a class="navbar-brand" href="./index.html">
-                                <b></b></a>
+                                <b>metal-trade-network</b></a>0.0.1
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <div class="top-nav-docs">
@@ -46,33 +50,31 @@
                                 </div>
                             </div>
                         </nav>
-
+                            <div class="docs-current-page-grid">
+                                <p>Assets</p>
+                            </div>
                     </div>
-
-                  <!--  <div class="docs-current-page-grid">
-                        <p><a href="#summaries">Summaries</a></p>
-                    </div>-->
                     
-                   <!-- <nav class="context-nav">
+                  <nav class="context-nav">
                     <ul>
-                        <li><p><a href="#readme"><b>ReadMe</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
-                     
-                        <li><p><a href="#asset-definition-summaries"><b>Assets</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
-                                  <ul>
-                                        
-                                    </ul>
-                                </ul>
-                                <li><p><a href="#transaction-definition-summaries"><b>Transactions</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
-                                <ul>
-                                   
-                                        
-                                    </ul>
-                                
-                        <li><p><a href="#detail"><b>Details</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
+                    
+                        
+                           <li><p><a href="#barteringspec"><b>BarteringSpec</b></a></p></li>
+                        
+                           <li><p><a href="#commodityholding"><b>CommodityHolding</b></a></p></li>
+                        
+                           <li><p><a href="#commoditylisting"><b>CommodityListing</b></a></p></li>
+                        
+                           <li><p><a href="#exchange"><b>Exchange</b></a></p></li>
+                        
+                           <li><p><a href="#brokage"><b>Brokage</b></a></p></li>
+                        
+                    
+
                     </ul>
 
                     </nav>
-    -->
+  
                 </div>
 
 
@@ -80,8 +82,8 @@
                 <div class="page-content-grid">
                     <section class="content-chunk" id="readme">
                     <h1 id="asset-model">Asset Model</h1>
-<h4 id="sampleasset">SampleAsset</h4>
-<p><strong>org.acme.trading.SampleAsset</strong> - <strong>An asset named SampleAsset</strong></p>
+<h4 id="barteringspec">BarteringSpec</h4>
+<p><strong>ampretia.mtn.extended.BarteringSpec</strong> - <strong>An asset named BarteringSpec</strong></p>
 <table>
 <thead>
 <tr>
@@ -92,19 +94,29 @@
 </thead>
 <tbody>
 <tr>
-<td>assetId</td>
+<td>id</td>
 <td>string</td>
 <td>The instance identifier for this type</td>
 </tr>
 <tr>
-<td>value</td>
-<td>string</td>
+<td>upperRangePercent</td>
+<td>integer</td>
 <td></td>
+</tr>
+<tr>
+<td>lowerRangePercent</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>trader</td>
+<td>string</td>
+<td>The identifier of an instance of ampretia.mtn.Trader</td>
 </tr>
 </tbody>
 </table>
-<h4 id="commodity">Commodity</h4>
-<p><strong>org.acme.trading.Commodity</strong> - <strong>An asset named Commodity</strong></p>
+<h4 id="commodityholding">CommodityHolding</h4>
+<p><strong>ampretia.mtn.CommodityHolding</strong> - <strong>An asset named CommodityHolding</strong></p>
 <table>
 <thead>
 <tr>
@@ -115,7 +127,83 @@
 </thead>
 <tbody>
 <tr>
-<td>tradingSymbol</td>
+<td>holdingId</td>
+<td>string</td>
+<td>The instance identifier for this type</td>
+</tr>
+<tr>
+<td>commodity</td>
+<td>object</td>
+<td>An instance of ampretia.mtn.Commodity</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>purchasePrice</td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>tradedBy</td>
+<td>string</td>
+<td>The identifier of an instance of ampretia.mtn.Trader</td>
+</tr>
+</tbody>
+</table>
+<h4 id="commoditylisting">CommodityListing</h4>
+<p><strong>ampretia.mtn.CommodityListing</strong> - <strong>An asset named CommodityListing</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>listingId</td>
+<td>string</td>
+<td>The instance identifier for this type</td>
+</tr>
+<tr>
+<td>commodity</td>
+<td>object</td>
+<td>An instance of ampretia.mtn.Commodity</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>integer</td>
+<td></td>
+</tr>
+<tr>
+<td>offerPrice</td>
+<td>number</td>
+<td></td>
+</tr>
+<tr>
+<td>offeringHouse</td>
+<td>string</td>
+<td>The identifier of an instance of ampretia.mtn.Brokage</td>
+</tr>
+</tbody>
+</table>
+<h4 id="exchange">Exchange</h4>
+<p><strong>ampretia.mtn.Exchange</strong> - <strong>An asset named Exchange</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exchangeId</td>
 <td>string</td>
 <td>The instance identifier for this type</td>
 </tr>
@@ -125,24 +213,24 @@
 <td></td>
 </tr>
 <tr>
-<td>mainExchange</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>quantity</td>
+<td>commissionRate</td>
 <td>number</td>
 <td></td>
 </tr>
 <tr>
-<td>owner</td>
+<td>exchangeRegulator</td>
 <td>string</td>
-<td>The identifier of an instance of org.acme.trading.Trader</td>
+<td>The identifier of an instance of ampretia.mtn.Regulator</td>
+</tr>
+<tr>
+<td>listedCommodities</td>
+<td>array</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h4 id="anothercommodity">AnotherCommodity</h4>
-<p><strong>org.acme.trading.AnotherCommodity</strong> - <strong>An asset named AnotherCommodity</strong></p>
+<h4 id="brokage">Brokage</h4>
+<p><strong>ampretia.mtn.Brokage</strong> - <strong>An asset named Brokage</strong></p>
 <table>
 <thead>
 <tr>
@@ -153,35 +241,32 @@
 </thead>
 <tbody>
 <tr>
-<td>tradingSymbol</td>
+<td>brokerId</td>
 <td>string</td>
 <td>The instance identifier for this type</td>
 </tr>
 <tr>
-<td>description</td>
+<td>name</td>
 <td>string</td>
 <td></td>
 </tr>
 <tr>
-<td>mainExchange</td>
-<td>string</td>
+<td>employedTraders</td>
+<td>array</td>
 <td></td>
 </tr>
 <tr>
-<td>quantity</td>
-<td>number</td>
-<td></td>
+<td>inhouseRegulator</td>
+<td>object</td>
+<td>An instance of ampretia.mtn.Regulator</td>
 </tr>
 <tr>
-<td>owner</td>
-<td>string</td>
-<td>The identifier of an instance of org.acme.trading.Trader</td>
+<td>portfolio</td>
+<td>array</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h3 id="acls">ACLs</h3>
-<h3 id="queries">Queries</h3>
-<p>still to do</p>
  
                     </section>
                 </div>

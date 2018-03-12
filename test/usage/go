@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -ev
+
+# Grab the parent (root) directory.
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+ROOT="${DIR}/../.."
+
+# clean out the output directory
+rm -rf "${DIR}/out"
+mkdir -p "${DIR}/out"
+
+cp ~/github/metal-trading/_dist/commodity-network.bna .
+
+#cd "${DIR}/_t"
+#zip -r ../commodity-network.bna *
+#cd -
+
+"${ROOT}"/bin/opus --archive "${DIR}/commodity-network.bna"  --outdir "${DIR}/out" --config "${DIR}/config.yaml" 
+
+serve "${DIR}/out"

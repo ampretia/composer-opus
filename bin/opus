@@ -9,7 +9,7 @@ const yargs = require('yargs');
 let results = yargs
     .option('a', {
         alias: 'archive',
-        demandOption: false,
+        demandOption: true,
         describe: 'Archive file to document',
         type: 'string'
     })
@@ -22,12 +22,20 @@ let results = yargs
     }).option('c', {
         alias: 'config',
         demandOption: false,
-        default: 'config.yaml',
-        describe: 'path to the configuration file',
+        default: '',
+        describe: 'Path to the configuration file to use (advanced use only)',
         type: 'string'
     })
     .strict()
     .help().argv;
 
-opus(results);
+opus(results)
+    .then(()=>{
+        console.log('All done');
+        process.exit(0);
+    }).catch(
+        (err)=>{
+            console.log(err);
+            process.exit(1);
+        });
 

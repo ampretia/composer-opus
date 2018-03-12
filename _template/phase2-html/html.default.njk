@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>{{context.core.name}}</title>
+    <title>{{core.name}}</title>
 
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/x-icon" href="/api-doc/composer/unstable/favicon.ico">
@@ -31,9 +31,13 @@
                     <div class="docs-pagenav-grid">
                         <!-- Navigation -->
                         <nav class="navbar-docs" role="navigation">
+                            <div class="search-form">
+                            <img width="200px" src="{{core.networkImage}}"></img>
+                            </div>
+
                             <!-- Brand and toggle get grouped for better mobile display -->
                             <a class="navbar-brand" href="./index.html">
-                                <b>{{context.core.name}}</b></a>{{context.core.version}}
+                                <b>{{core.name}}</b></a>{{core.version}}
                             <!-- Collect the nav links, forms, and other content for toggling -->
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                 <div class="top-nav-docs">
@@ -46,37 +50,47 @@
                                 </div>
                             </div>
                         </nav>
-
+                            <div class="docs-current-page-grid">
+                                <p>{{ basename | title }}</p>
+                            </div>
                     </div>
-
-                  <!--  <div class="docs-current-page-grid">
-                        <p><a href="#summaries">Summaries</a></p>
-                    </div>-->
                     
-                   <!-- <nav class="context-nav">
+                  <nav class="context-nav">
                     <ul>
-                        <li><p><a href="#readme"><b>ReadMe</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
-                     
-                        <li><p><a href="#asset-definition-summaries"><b>Assets</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
-                                  <ul>
-                                        {% for asset in context.types.asset %}
-                                            <li><p><a href="#{{asset.name | lower }}">{{asset.name}}</a></p></li>
-                                        {% endfor %}
-                                    </ul>
-                                </ul>
-                                <li><p><a href="#transaction-definition-summaries"><b>Transactions</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
+                    {% if 'assets' in basename %}
+                        {% for asset in types.asset %}
+                           <li><p><a href="#{{asset.name | lower}}"><b>{{asset.name}}</b></a></p></li>
+                        {% endfor %}
+                    {% elif 'transactions' in basename %}   
+                            {% for fn in scripts.files %}
+                                <li><p><a href="#{{fn.identifier | lower}}"><b>{{fn.identifier}}</b></a></p>
                                 <ul>
-                                   
-                                        {% for tx in context.types.transaction %}
-                                            <li><p><a href="#{{tx.name | lower }}">{{tx.name}}</a></p></li>
-                                        {% endfor %}
-                                    </ul>
-                                
-                        <li><p><a href="#detail"><b>Details</b><img src="./assets/img/Caret_SW_2.svg" class="caret"></a></p></li>
+                                 {% for f in fn.functions %}
+                                    <li><p><a href="#{{f.name | lower}}"><b>{{f.name}}</b></a></p></li>             
+                                {% endfor %}
+                                </ul></li>
+                            {% endfor %}
+                    {% elif 'acls' in basename %}   
+                        {% for rule in acls.rules %}
+                             <li><p><a href="#{{rule.name | lower | replace("_","-") }}"><b>{{rule.name }}</b></a></p></li>  
+                        {% endfor %}
+                    {% elif 'index' in basename %}   
+
+                    {% elif 'participants' in basename %}   
+                            {% for pt in types.participant %}
+                            <li><p><a href="#{{pt.name | lower}}"><b>{{pt.name}}</b></a></p></li>
+                            {% endfor %}
+                    {% elif 'queries' in basename %}   
+                            {% for query in queries %}
+                           <li><p><a href="#{{query.name | lower | replace("_","-") }}"><b>{{query.name }}</b></a></p></li>  
+                            {% endfor %}
+
+                    {% endif %}
+
                     </ul>
 
                     </nav>
-    -->
+  
                 </div>
 
 

@@ -11,4 +11,6 @@ ROOT="${DIR}/../.."
 rm -rf "${DIR}/out"
 mkdir -p "${DIR}/out"
 
-"${ROOT}"/bin/opus --archive "${DIR}/commodity-network.bna"  --outdir "${DIR}/out" --config "${DIR}/config.yaml"
+"${ROOT}"/bin/opus --archive "${DIR}/network.bna"  --outdir "${DIR}/out" --config "${DIR}/sns-config.yaml" 
+
+serve "${DIR}/out"

@@ -8,6 +8,11 @@
 | --------  | ---- | ----------- |
 {% for id,info in asset.properties %}|{{id}}|{{info.type}}|{{info.description}}|
 {% endfor %}
+
+{% for extra in asset.decorators.docs %}
+{{ asset.decorators[extra] }}
+{% endfor %}
+
 {% endfor %}
 
 
